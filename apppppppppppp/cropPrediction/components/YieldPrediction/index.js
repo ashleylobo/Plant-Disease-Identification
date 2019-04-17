@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text,Button} from 'react-native';
 
-export default class LoginSignUp extends Component {
+export default class YieldPrediction extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,6 +12,7 @@ export default class LoginSignUp extends Component {
     return (
       <View>
         <Text> textInComponent </Text>
+        <Button title="Yiled Prediction" onPress={()=>this.props.naviagtion.navigate('homePage')}></Button>
       </View>
     );
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
-export default class LoginSignUp extends Component {
+export default class InfoAndSelectImage extends Component {
   constructor(props) {
     super(props);
     this.state = {
