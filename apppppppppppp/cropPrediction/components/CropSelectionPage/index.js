@@ -11,10 +11,7 @@ const routes = [
   {name:require("../../assets/images/potato_vector.jpg"), title:"potato"},
   {name:require("../../assets/images/strawberry_vector.jpg"), title:"strawberry"},
   {name:require("../../assets/images/tomato_vector.jpg"), title:"tomato"},
-  {name:require("../../assets/images/onions_vector.jpg"), title:"onions"},
-  {name:require("../../assets/images/mango_vector.jpg"), title:"mango"},
-  {name:require("../../assets/images/watermelon_vector.jpg"), title:"melon"},
-  {name:require("../../assets/images/orange_vector.jpg"), title:"orange"},];
+];
   
 const mages =  [
     {name:require("../../assets/images/apple_vector.jpg"), title:"apple"},
@@ -41,11 +38,7 @@ export default class CropSelectionPage extends Component {
       pepper:false,
       strawberry:false,
       tomato:false,
-      onions:false,
-      mango:false,
-      melon:false,
-      orange:false,
-      changeState:0
+    
     };
   }
 
@@ -91,10 +84,6 @@ export default class CropSelectionPage extends Component {
         >
       </FlatList>
 
-     
-      <Button style={{marginTop:10,alignSelf:'center' , width:100 , justifyContent:'center'}} 
-        onPress={()=>this.homePageFunction()}><Text style={{textAlign:'center' , color:'white'}}>Submit</Text></Button>
-                
       </View>
     );
   }
