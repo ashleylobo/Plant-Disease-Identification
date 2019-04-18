@@ -79,6 +79,7 @@ export default class CropSelectionPage extends Component {
           renderItem={i => {
               // console.warn(routes[2].name) 
               // console.warn(i.item) 
+              console.warn(i.item.name)
               var queueLength = Math.floor(Math.random() * 4);
               return (
                   <View style={{ flex:1, flexDirection:"column", borderWidth:this.state[i.item.title] , margin:5, borderColor:"black", borderRadius:25}}>
