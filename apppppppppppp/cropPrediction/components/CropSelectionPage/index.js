@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { View,Image, Text ,FlatList,Button } from 'react-native';
+import { View,Image, Text ,FlatList,TouchableOpacity} from 'react-native';
+import {Button} from 'native-base';
 import LoginSignUp from '../LoginSignUp';
+
 
 const routes = [
   {name:require("../../assets/images/apple_vector.jpg"), title:"apple"},
