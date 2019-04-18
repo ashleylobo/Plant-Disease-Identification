@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View,Image, Text ,FlatList,TouchableOpacity} from 'react-native';
+import { View,Image, Text ,FlatList,TouchableOpacity,AsyncStorage} from 'react-native';
 import {Button} from 'native-base';
 import LoginSignUp from '../LoginSignUp';
 
@@ -49,25 +49,55 @@ export default class CropSelectionPage extends Component {
     };
   }
 
+  componentDidMount(){
+    
+    var res = null
+
+    AsyncStorage.getItem('checkState', (err, result) => {
+      //console.log("resulttttttttttt",result);
+      res = JSON.parse(result)
+    
+      if(res != null){
+        console.log("maiiiiiiiiiiiinResu",res.imgList)
+        this.setState({changeState:1})
+
+        this.props.navigation.navigate('homePage',{imgs:{imgs:res.imgList,changeState:this.state.changeState}})
+      }
+    
+    });
+  }
+
   homePageFunction(){
     var imgList = []
-    var xyzzz = []
+    var imgDictList = []
 
     for(i=0 ; i<mages.length ; i++){
-      //console.warn(mages[i])
       if(this.state[mages[i].title]){
           imgList.push(mages[i].name)
-          const temp = [mages[i].name , mages[i].title]
-          xyzzz.push(temp)
+          var imgDict = {
+              url:mages[i].name,
+              title:mages[i].title
+          }
+          imgDictList.push(imgDict)
       }
     }
 
-    this.props.navigation.navigate('homePage',{imgs:{imgs:imgList,changeState:this.state.changeState}})
+    var finaleList = {
+      state:1,
+      imgList:imgDictList
+    }
 
+    AsyncStorage.setItem('checkState', JSON.stringify(finaleList))
+
+    console.log('imgDIct', imgDictList)
+    this.props.navigation.navigate('homePage',{imgs:{imgs:imgList,changeState:this.state.changeState}})
   }
+
+
 
   render() {
     console.disableYellowBox = true
+    
     return (
       <View style={{alignContent:'center'}}>
 

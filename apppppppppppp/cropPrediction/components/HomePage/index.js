@@ -17,11 +17,14 @@ export default class HomePage extends Component {
   componentDidMount(){
     let imgs = this.props.navigation.getParam("imgs");
 
+
+    console.log('datatatatata' , imgs)
+
     if (imgs.changeState == 1){
       this.setState({imgs:imgs.imgs , changeState:0})
     }
 
-    console.log(imgs.changeState)
+    console.log(this.state.imgs)
   }
 
   render() {
@@ -44,7 +47,7 @@ export default class HomePage extends Component {
                   return (
                       <View style={{ flex:1}}>
                         <TouchableOpacity >
-                          <Image style={{alignSelf:"center", width:75,height:75,borderRadius:38, margin:7}} source={i.item} ></Image>
+                          <Image style={{alignSelf:"center", width:75,height:75,borderRadius:38, margin:7}} source={i.item.url} ></Image>
                         </TouchableOpacity>
                       </View>
                   )}}
