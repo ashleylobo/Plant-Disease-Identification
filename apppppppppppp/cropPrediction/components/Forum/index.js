@@ -38,7 +38,7 @@ export default class Forum extends Component {
           keyExtractor={item => item.id.toString()}
           renderItem={({ item }) => (
         <View>
-        <ForumCards navigation={this.props.navigation} titleName={item.title}  imageUrl={item.imageUrl} description={item.description}  />
+        <ForumCards navigation={this.props.navigation} fourmid={item.id} titleName={item.title}  imageUrl={item.imageUrl} description={item.description}  />
       </View>
           )}
           />
@@ -64,3 +64,7 @@ const styles = StyleSheet.create({
         margin:0,
    }
  });
+
+//  this.props.navigation.navigate('forumQuery', {
+//   forumId:item.id,
+// });

@@ -23,6 +23,7 @@ import ResultOfPredictedDisease from './components/ResultOfPredictedDisease'; //
 import YieldPrediction from './components/YieldPrediction';
 import CropDetailPage from './components/CropDetailPage';
 import AnswersToQuestions from './components/AnswersToQuestions';
+import ForumQuery from './components/ForumQuery';
 
 //-----------------------Drawer navigation Bar ---------------------------------------
 
@@ -38,7 +39,8 @@ const Mdn = createDrawerNavigator({
   infoAndSelectImage:{screen:InfoAndSelectImage},
   resultOfPredictedDisease:{screen:ResultOfPredictedDisease},
   yieldPrediction:{screen:YieldPrediction},
-  answersToQuestions:{screen:AnswersToQuestions}
+  answersToQuestions:{screen:AnswersToQuestions},
+  forumQuery:{screen:ForumQuery}
 },
 {
   contentComponent: SideBar,

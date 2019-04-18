@@ -5,9 +5,11 @@ import { View, Text, StyleSheet } from 'react-native';
 // create a component
 class ForumQuery extends Component {
     render() {
+        const { navigation } = this.props;
+        const forumId = navigation.getParam('forumId',0 );
         return (
             <View style={styles.container}>
-                <Text>ForumQuery</Text>
+                <Text>{forumId}</Text>
             </View>
         );
     }

@@ -1,0 +1,10 @@
+In development...
+
+To run -> python sentsim.py
+
+To test-> 
+         Navigate to postman
+
+Type the query->
+
+http://127.0.0.1:5000/query/Which pesticide is used for rice cultivation in ratnagiri
