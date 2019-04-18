@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
-import { View,Image, Text ,FlatList,TouchableOpacity } from 'react-native';
-import {CheckBox,Button} from 'native-base';
+import { View,Image, Text ,FlatList,Button } from 'react-native';
+import LoginSignUp from '../LoginSignUp';
 
 const routes = [
   {name:require("../../assets/images/apple_vector.jpg"), title:"apple"},
   {name:require("../../assets/images/corn_vector.jpg"), title:"corn"},
-  {name:require("../../assets/images/grapes_vector.jpg"), title:"grapes"},
+  {name:require("../../assets/images/grapes_vector.jpg"), title:"grape"},
   {name:require("../../assets/images/peach_vector.jpg"), title:"peach"},
   {name:require("../../assets/images/pepper_vector.jpg"), title:"pepper"},
   {name:require("../../assets/images/potato_vector.jpg"), title:"potato"},
   {name:require("../../assets/images/strawberry_vector.jpg"), title:"strawberry"},
   {name:require("../../assets/images/tomato_vector.jpg"), title:"tomato"},
-  {name:require("../../assets/images/onions_vector.jpg"), title:"onions"},
-  {name:require("../../assets/images/mango_vector.jpg"), title:"mango"},
-  {name:require("../../assets/images/watermelon_vector.jpg"), title:"melon"},
-  {name:require("../../assets/images/orange_vector.jpg"), title:"orange"},];
+];
   
 const mages =  [
   {name:require("../../assets/images/apple_vector.jpg"), title:"apple"},
@@ -78,8 +75,9 @@ export default class CropSelectionPage extends Component {
           data = {mages}
           keyExtractor={(item, index) => index.toString()}
           renderItem={i => {
-              const isSelected = true 
-
+              // console.warn(routes[2].name) 
+              // console.warn(i.item) 
+              var queueLength = Math.floor(Math.random() * 4);
               return (
                   <View style={{ flex:1, flexDirection:"column", borderWidth:this.state[i.item.title] , margin:5, borderColor:"black", borderRadius:25}}>
                     <TouchableOpacity onPress={()=> this.state[i.item.title] ? this.setState({[i.item.title]: 0 , borderr:0}):this.setState({[i.item.title]: 2, changeState:1,borderr:1})}>

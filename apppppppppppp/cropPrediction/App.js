@@ -21,12 +21,16 @@ import HomePage from './components/HomePage';
 import InfoAndSelectImage from './components/InfoAndSelectImage';   //rename ur calss and folder path
 import ResultOfPredictedDisease from './components/ResultOfPredictedDisease'; //rename ur calss and folder path
 import YieldPrediction from './components/YieldPrediction';
-
+import CropDetailPage from './components/CropDetailPage'
 
 //-----------------------Drawer navigation Bar ---------------------------------------
 
 const Mdn = createDrawerNavigator({
   cropSelectionPage:{screen:CropSelectionPage},
+
+  loginSignUp:{screen:LoginSignUp},
+
+  cropDetailPage:{screen:CropDetailPage},
   homePage:{screen:HomePage},
   loginSignUp:{screen:LoginSignUp},
   forum:{screen:Forum},
@@ -53,11 +57,11 @@ const AppNavigator = createStackNavigator({
       headerLeft:(
         <FontAwesome5 name={"bars"} brand style={{paddingLeft:15 , fontSize: 30, color:'white'}} onPress={() => navigation.toggleDrawer()}/>
       ),
-      title:("Student Page"),
+      title:("Farmitra"),
       headerTitleStyle: {
         fontWeight: "bold",
         fontSize:30,
-        paddingLeft:60,
+        paddingLeft:50,
         color: "white",
         
         alignSelf: 'center',
