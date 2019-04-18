@@ -10,7 +10,11 @@ const routes = [
   {name:require("../../assets/images/pepper_vector.jpg"), title:"pepper"},
   {name:require("../../assets/images/potato_vector.jpg"), title:"potato"},
   {name:require("../../assets/images/strawberry_vector.jpg"), title:"strawberry"},
-  {name:require("../../assets/images/tomato_vector.jpg"), title:"tomato"}];
+  {name:require("../../assets/images/tomato_vector.jpg"), title:"tomato"},
+  {name:require("../../assets/images/onions_vector.jpg"), title:"onions"},
+  {name:require("../../assets/images/mango_vector.jpg"), title:"mango"},
+  {name:require("../../assets/images/watermelon_vector.jpg"), title:"melon"},
+  {name:require("../../assets/images/orange_vector.jpg"), title:"orange"},];
   
 const mages =  [
     {name:require("../../assets/images/apple_vector.jpg"), title:"apple"},
@@ -26,27 +30,52 @@ const mages =  [
     {name:3, title:"grape"},
     {name:6, title:"potato"}];
 
-
 export default class CropSelectionPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      apple:false,
+      corn:false,
+      grapes:false,
+      peach:false,
+      pepper:false,
+      strawberry:false,
+      tomato:false,
+      onions:false,
+      mango:false,
+      melon:false,
+      orange:false,
+      changeState:0
     };
   }
 
-  render() {
+  homePageFunction(){
+    var imgList = []
+    var xyzzz = []
 
-    for(i=1 ; i<10 ; i++){
-      
+    for(i=0 ; i<mages.length ; i++){
+      //console.warn(mages[i])
+      if(this.state[mages[i].title]){
+          imgList.push(mages[i].name)
+          const temp = [mages[i].name , mages[i].title]
+          xyzzz.push(temp)
+      }
     }
 
+    this.props.navigation.navigate('homePage',{imgs:{imgs:imgList,changeState:this.state.changeState}})
+
+  }
+
+  render() {
+    console.disableYellowBox = true
     return (
-      <View>
+      <View style={{alignContent:'center'}}>
 
         <FlatList 
+          extraData={this.state}
           numColumns={3}
           data = {mages}
-          
+          keyExtractor={(item, index) => index.toString()}
           renderItem={i => {
               // console.warn(routes[2].name) 
               // console.warn(i.item) 
@@ -62,7 +91,12 @@ export default class CropSelectionPage extends Component {
         >
       </FlatList>
 
+     
+      <Button style={{marginTop:10,alignSelf:'center' , width:100 , justifyContent:'center'}} 
+        onPress={()=>this.homePageFunction()}><Text style={{textAlign:'center' , color:'white'}}>Submit</Text></Button>
+                
       </View>
     );
   }
 }
+
