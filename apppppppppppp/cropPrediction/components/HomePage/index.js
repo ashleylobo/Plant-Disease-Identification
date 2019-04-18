@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text , ScrollView , Image,TouchableOpacity,FlatList } from 'react-native';
-import { Container, Content, Footer, FooterTab, Button, Icon } from 'native-base';
+import { Container,Fab, Content, Footer, FooterTab, Button, Icon } from 'native-base';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Advisory from './Advisory';
 
@@ -45,9 +45,10 @@ export default class HomePage extends Component {
                   const isSelected = true 
   
                   return (
-                      <View style={{ flex:1}}>
+                      <View style={{ flex:1 , margin:5}}>
                         <TouchableOpacity >
                           <Image style={{alignSelf:"center", width:75,height:75,borderRadius:38, margin:7}} source={i.item.url} ></Image>
+                          <Text style={{textAlign:'center' , color:'#0c420c' , fontSize:15}} >{i.item.title}</Text>
                         </TouchableOpacity>
                       </View>
                   )}}
@@ -59,26 +60,37 @@ export default class HomePage extends Component {
 
           </ScrollView>
 
+          {/* chalkboard-teacher */}
+
           <View style={{bottom:0 }}>
 
             <Footer >
               <FooterTab >
-                <Button style={{backgroundColor:'rgb(216, 255, 216)'}}>
-                    <Text>sadfsdf</Text>
-                    <FontAwesome5 name={"bars"} brand style={{ fontSize: 20, color:'white'}} />
+                <Button style={{backgroundColor:'rgb(216, 255, 216)', borderRadius:0}}>
+                    <FontAwesome5 name={"home"} brand style={{ fontSize: 20, color:'#0c420c'}} />
+                    <Text style={{color:'#0c420c'}}>HomePage</Text>
                 </Button>
-                <Button style={{backgroundColor:'rgb(216, 255, 216)'}}>
-                    <Text>sadfsdf</Text>
-                    <FontAwesome5 name={"bars"} brand style={{fontSize: 20, color:'white'}} />
+                <Button style={{backgroundColor:'rgb(237, 255, 237)', borderRadius:0}}>
+                    <FontAwesome5 name={"address-card"} brand style={{ fontSize: 20, color:'#0c420c'}} />
+                    <Text style={{color:'#0c420c'}}>Forum</Text>
                 </Button>
-                <Button active style={{ backgroundColor:'rgb(216, 255, 216)'}}>
-                    <Text>sadfsdf</Text>
-                    <FontAwesome5 name={"bars"} brand style={{ fontSize: 20, color:'black'}} />
+                <Button active style={{ backgroundColor:'rgb(237, 255, 237)' , borderRadius:0}}>
+                    <FontAwesome5 name={"chart-line"} brand style={{ fontSize: 20, color:'#0c420c'}} />
+                    <Text style={{color:'#0c420c'}}>Prediction</Text>
                 </Button>
               </FooterTab>
             </Footer>
 
           </View>
+
+
+          <Fab
+            active={this.state.active}
+            containerStyle={{ }}
+            style={{ backgroundColor: 'white' , marginBottom:45}}
+            position="bottomRight">
+            <FontAwesome5 name={"chalkboard-teacher"} brand style={{ fontSize: 20, color:'#0c420c'}} />
+          </Fab>
 
         </View>
       );

@@ -35,16 +35,21 @@ export default class Advisory extends Component {
                 const isSelected = true 
 
                 return (
-                    <View style={{flex:1,borderWidth:1,borderRadius:5, borderColor:'#dbdbdb',marginLeft:15,marginRight:15,marginTop:15}}>
+                    <View style={{flex:1,backgroundColor:'rgba(255,255,255,0)',borderWidth:1,borderRadius:5, borderColor:'#dbdbdb',marginLeft:15,marginRight:15,marginTop:15}}>
                       <TouchableOpacity style={{flex:1,flexDirection:'row'}}>
                       
-                        <View style={{flex:0.58 }}>
-                          <Text style={{paddingLeft:7,fontSize:18 ,marginBottom:10}}>{i.item.description}</Text>
+                        <View style={{flex:0.58 ,backgroundColor:'rgba(255,255,255,0)' }}>
+                          <Text style={{paddingLeft:7,fontSize:18 ,marginBottom:10,color:'#0c420c'}}>{i.item.description}</Text>
                           {/* <Text style={{alignSelf:'center',textAlign:'center',backgroundColor:'rgb(216, 255, 216)' , borderWidth:1 , borderRadius:5 ,color:'#0c420c',width:95,height:40}} >{i.item.type}</Text>
                          */}
-                          <Button style={{alignSelf:'center',justifyContent:'center',backgroundColor:'rgb(216, 255, 216)' , borderRadius:5 ,color:'#0c420c',width:155,height:30}}>
-                            <Text style={{fontSize:18 , fontWeight:'bold'}}>{i.item.type}</Text>
+                          <Button style={{alignSelf:'center',justifyContent:'center',backgroundColor:'#0c420c' , borderRadius:5 ,color:'white',width:155,height:30}}>
+                            <Text style={{fontSize:18 , fontWeight:'bold',color:'white'}}>{i.item.type}</Text>
                           </Button>
+{/* 
+                            <Button style={{alignSelf:'center',justifyContent:'center',backgroundColor:'#0c420c' , borderRadius:5 ,color:'rgb(237, 255, 237)',width:155,height:30}}>
+                            <Text style={{fontSize:18 , fontWeight:'bold' }}>{i.item.type}</Text>
+                          </Button> */}
+                        
                         
                         </View>
 

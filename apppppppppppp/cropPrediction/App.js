@@ -73,7 +73,7 @@ const AppNavigator = createStackNavigator({
       headerStyle: {
         borderBottomColor:"white",
         borderBottomWidth:1,
-        backgroundColor: "#0051a3"
+        backgroundColor: "#0c420c"
       }
     };
   }
