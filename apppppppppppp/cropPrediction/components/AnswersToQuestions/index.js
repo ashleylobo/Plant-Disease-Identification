@@ -5,7 +5,6 @@ import {Fab} from 'native-base';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import  ForumCards  from './forumCards'
 
-//onPress={() => this.props.naviagtion.navigate('answersToQuestions',{card:{titleName:item.title,imageUrl:item.imageUrl,description:item.description}})}
 
 const data = [
   {id:1,title:"What is This?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", imageUrl:"https://i.imgur.com/v2HxvF3.jpg"},
@@ -31,7 +30,9 @@ export default class Forum extends Component {
 
         <FlatList
           contentContainerStyle={{
+
             flexDirection: 'column',
+
             width: '100%'
           }}
           data={data}

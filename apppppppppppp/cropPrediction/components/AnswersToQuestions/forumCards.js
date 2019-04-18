@@ -16,8 +16,7 @@ export default class ForumCards extends Component {
 
   render() {
       return (
-        <Card
-            onPress={() => this.props.naviagtion.navigate('answersToQuestions',{card:{titleName:this.props.title,imageUrl:this.props.imageUrl,description:this.props.description}})}
+                 <Card
             title={this.props.titleName}
             image={{uri:this.props.imageUrl}}>
             <Text style={{marginBottom: 10}}>
