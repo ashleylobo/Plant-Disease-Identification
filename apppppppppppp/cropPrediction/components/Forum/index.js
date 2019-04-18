@@ -38,7 +38,7 @@ export default class Forum extends Component {
           keyExtractor={item => item.id.toString()}
           renderItem={({ item }) => (
         <View>
-        <ForumCards titleName={item.title}  imageUrl={item.imageUrl} description={item.description}  />
+        <ForumCards navigation={this.props.navigation} titleName={item.title}  imageUrl={item.imageUrl} description={item.description}  />
       </View>
           )}
           />

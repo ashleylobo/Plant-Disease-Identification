@@ -1,5 +1,5 @@
 import React, { Component }from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet,TouchableOpacity } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
 // constructor(props){
@@ -15,9 +15,13 @@ export default class ForumCards extends Component {
 
 
   render() {
+    console.warn(this.props.description)
       return (
+        
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('answersToQuestions',{card:{title:this.props.titleName,imageUrl:this.props.imageUrl,description:this.props.description}})}
+        >
+
         <Card
-            onPress={() => this.props.naviagtion.navigate('answersToQuestions',{card:{titleName:this.props.title,imageUrl:this.props.imageUrl,description:this.props.description}})}
             title={this.props.titleName}
             image={{uri:this.props.imageUrl}}>
             <Text style={{marginBottom: 10}}>
@@ -42,6 +46,9 @@ export default class ForumCards extends Component {
             </View>
 
             </Card>
+
+        </TouchableOpacity>
+        
       );
   }
 }

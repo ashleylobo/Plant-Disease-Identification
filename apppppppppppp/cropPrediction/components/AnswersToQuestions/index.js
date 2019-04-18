@@ -3,8 +3,6 @@ import { View, Text, StyleSheet,FlatList } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import {Fab} from 'native-base';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import  ForumCards  from './forumCards'
-
 
 const data = [
   {id:1,title:"What is This?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", imageUrl:"https://i.imgur.com/v2HxvF3.jpg"},
@@ -16,7 +14,7 @@ const data = [
 ];
 
 
-export default class Forum extends Component {
+export default class AnswersToQuestions extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,7 +26,7 @@ export default class Forum extends Component {
     return (
       <View>
 
-        <FlatList
+        {/* <FlatList
           contentContainerStyle={{
 
             flexDirection: 'column',
@@ -52,7 +50,37 @@ export default class Forum extends Component {
             position="bottomRight"
             onPress={() => this.setState({ active: !this.state.active })}>
             <FontAwesome5 name={"bars"} brand style={{ fontSize: 20, color:'black'}} />
-          </Fab>
+          </Fab> */}
+
+<Text>asjfbkjsbdjkfbjkasdbfgmkbsmvbsdcvjksdfjk</Text>
+
+      <Card
+          title={this.props.titleName}
+          image={{uri:this.props.imageUrl}}>
+            <Text style={{marginBottom: 10}}>
+            { this.props.description }
+            </Text>
+          <View style = {styles.lineStyle} />
+          <View style={{flex: 1, flexDirection: 'row',justifyContent: 'space-between',paddingTop:20,paddingBottom:10}}>
+
+            <Icon
+            name='thumbs-up'
+            type='font-awesome'
+            color='gray' />
+            <Icon
+            name='thumbs-down'
+            type='font-awesome'
+            color='gray' />                
+            <Icon
+            name='share-alt'
+            type='font-awesome'
+            color='gray' />
+
+            </View>
+
+            </Card>
+
+
 
       </View>
     );
