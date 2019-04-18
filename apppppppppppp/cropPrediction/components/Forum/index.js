@@ -3,6 +3,7 @@ import { View, Text, StyleSheet,FlatList } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import {Fab} from 'native-base';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import  ForumCards  from './forumCards'
 
 
 const data = [
@@ -47,7 +48,7 @@ export default class Forum extends Component {
             active={this.state.active}
             direction="up"
             containerStyle={{ }}
-            style={{ backgroundColor: '#5067FF' }}
+            style={{ backgroundColor: 'rgb(216, 255, 216)' }}
             position="bottomRight"
             onPress={() => this.setState({ active: !this.state.active })}>
             <FontAwesome5 name={"bars"} brand style={{ fontSize: 20, color:'black'}} />
