@@ -21,13 +21,17 @@ import HomePage from './components/HomePage';
 import InfoAndSelectImage from './components/InfoAndSelectImage';   //rename ur calss and folder path
 import ResultOfPredictedDisease from './components/ResultOfPredictedDisease'; //rename ur calss and folder path
 import YieldPrediction from './components/YieldPrediction';
+import CropDetailPage from './components/CropDetailPage'
 import ForumQuery from './components/ForumQuery';
-
 
 //-----------------------Drawer navigation Bar ---------------------------------------
 
 const Mdn = createDrawerNavigator({
   cropSelectionPage:{screen:CropSelectionPage},
+
+  loginSignUp:{screen:LoginSignUp},
+
+  cropDetailPage:{screen:CropDetailPage},
   homePage:{screen:HomePage},
   loginSignUp:{screen:LoginSignUp},
   forum:{screen:Forum},

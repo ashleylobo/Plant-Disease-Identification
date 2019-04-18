@@ -1,6 +1,8 @@
 import React, { Component }from 'react';
 import { View, Text, StyleSheet,FlatList } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
+import {Fab} from 'native-base';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import  ForumCards  from './forumCards'
 
 
@@ -24,7 +26,9 @@ export default class Forum extends Component {
   render() {
     
     return (
-          <FlatList
+      <View>
+
+        <FlatList
           contentContainerStyle={{
 
             flexDirection: 'column',
@@ -40,6 +44,17 @@ export default class Forum extends Component {
           )}
           />
 
+        <Fab
+            active={this.state.active}
+            direction="up"
+            containerStyle={{ }}
+            style={{ backgroundColor: 'rgb(216, 255, 216)' }}
+            position="bottomRight"
+            onPress={() => this.setState({ active: !this.state.active })}>
+            <FontAwesome5 name={"bars"} brand style={{ fontSize: 20, color:'black'}} />
+          </Fab>
+
+      </View>
     );
   }
 }

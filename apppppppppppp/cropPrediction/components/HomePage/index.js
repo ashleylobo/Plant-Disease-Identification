@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text , Scrollable , Image,TouchableOpacity,FlatList } from 'react-native';
+import { View, Text , ScrollView , Image,TouchableOpacity,FlatList } from 'react-native';
+import { Container, Content, Footer, FooterTab, Button, Icon } from 'native-base';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Advisory from './Advisory';
+
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -24,12 +28,16 @@ export default class HomePage extends Component {
 
     if(this.changeState != -1){
       return (
-        <View style={{backgroundColor:'rgba(216, 255, 216,0.6)'}}>
+
+        <View style={{flex:1}}>
+        
+          <ScrollView>
             <FlatList 
               horizontal
               extraData={this.state}
               data = {this.state.imgs}
               keyExtractor={(item, index) => index.toString()}
+              showsHorizontalScrollIndicator={false}
               renderItem={i => {
                   const isSelected = true 
   
@@ -40,12 +48,35 @@ export default class HomePage extends Component {
                         </TouchableOpacity>
                       </View>
                   )}}
-            >
-        </FlatList>
-  
-  
-  
-          <Text> textInComponent </Text>
+             >
+            </FlatList>
+
+            <Advisory style={{marginTop:10}}></Advisory>
+            
+
+          </ScrollView>
+
+          <View style={{bottom:0 }}>
+
+            <Footer >
+              <FooterTab >
+                <Button style={{backgroundColor:'rgb(216, 255, 216)'}}>
+                    <Text>sadfsdf</Text>
+                    <FontAwesome5 name={"bars"} brand style={{ fontSize: 20, color:'white'}} />
+                </Button>
+                <Button style={{backgroundColor:'rgb(216, 255, 216)'}}>
+                    <Text>sadfsdf</Text>
+                    <FontAwesome5 name={"bars"} brand style={{fontSize: 20, color:'white'}} />
+                </Button>
+                <Button active style={{ backgroundColor:'rgb(216, 255, 216)'}}>
+                    <Text>sadfsdf</Text>
+                    <FontAwesome5 name={"bars"} brand style={{ fontSize: 20, color:'black'}} />
+                </Button>
+              </FooterTab>
+            </Footer>
+
+          </View>
+
         </View>
       );
     }
