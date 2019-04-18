@@ -21,6 +21,7 @@ import HomePage from './components/HomePage';
 import InfoAndSelectImage from './components/InfoAndSelectImage';   //rename ur calss and folder path
 import ResultOfPredictedDisease from './components/ResultOfPredictedDisease'; //rename ur calss and folder path
 import YieldPrediction from './components/YieldPrediction';
+import ForumQuery from './components/ForumQuery';
 
 
 //-----------------------Drawer navigation Bar ---------------------------------------
@@ -33,6 +34,7 @@ const Mdn = createDrawerNavigator({
   infoAndSelectImage:{screen:InfoAndSelectImage},
   resultOfPredictedDisease:{screen:ResultOfPredictedDisease},
   yieldPrediction:{screen:YieldPrediction},
+  forumQuery:{screen:ForumQuery}
 },
 {
   contentComponent: SideBar,

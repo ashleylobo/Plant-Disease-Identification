@@ -35,7 +35,7 @@ export default class Forum extends Component {
           keyExtractor={item => item.id.toString()}
           renderItem={({ item }) => (
         <View>
-        <ForumCards titleName={item.title}  imageUrl={item.imageUrl} description={item.description}  />
+        <ForumCards forumid={item.id} titleName={item.title}  imageUrl={item.imageUrl} description={item.description}  onPress={ ()=>{console.warn("bu")} } />
       </View>
           )}
           />
@@ -50,3 +50,7 @@ const styles = StyleSheet.create({
         margin:0,
    }
  });
+
+//  this.props.navigation.navigate('forumQuery', {
+//   forumId:item.id,
+// });
