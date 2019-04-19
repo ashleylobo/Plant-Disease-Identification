@@ -74,6 +74,8 @@ export default class ResultOfPredictedDisease extends Component {
 };  
 
   render() {
+    const {navigation}=this.props
+    group=navigation.getParam('group',1)
     return (
       <View>
         <View style={{marginTop: 22}}>
@@ -106,8 +108,7 @@ export default class ResultOfPredictedDisease extends Component {
             </View>
           </Modal>
         </View>
-
-
+                  <Text>Crop of group {group}</Text>
         <Button title="Take Photo" onPress={this.getPhotos} />
         {
            this.state.uri != false &&
