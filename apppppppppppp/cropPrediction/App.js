@@ -60,7 +60,6 @@ const page3 = createDrawerNavigator({
 },
 );
 const page4 = createDrawerNavigator({
-  instruction:{screen:Instruction},
   cropDetailPage:{screen:CropDetailPage},
 },
 {
@@ -111,6 +110,14 @@ const page10 = createDrawerNavigator({
   contentComponent: SideBar,
 },
 );
+const page11 = createDrawerNavigator({
+  instruction:{screen:Instruction},
+},
+{
+  contentComponent: SideBar,
+},
+);
+
 
 
 //-----------------------Main App navigation ---------------------------------------
@@ -129,6 +136,8 @@ const AppNavigator = createStackNavigator({
    profile8:page8,
    profile9:page9,
    profile10:page10,
+
+   profile11:page11,
   },
   {
   defaultNavigationOptions: ({navigation}) => {
