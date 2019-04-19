@@ -1,7 +1,7 @@
 import React, { Component }from 'react';
 import { View, Text, StyleSheet,FlatList } from 'react-native';
-import { Card, ListItem, Button, Icon } from 'react-native-elements'
-import {Fab} from 'native-base';
+import { Card, ListItem, Icon } from 'react-native-elements'
+import { Container,Fab, Content, Footer, FooterTab, Button} from 'native-base';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import  ForumCards  from './forumCards'
 
@@ -27,33 +27,56 @@ export default class Forum extends Component {
   render() {
     
     return (
-      <View>
 
+      <View style={{flex:1}}>
+        
+      <View>
         <FlatList
-          contentContainerStyle={{
-            flexDirection: 'column',
-            width: '100%'
-          }}
+          numColumns={1}
           data={data}
           keyExtractor={item => item.id.toString()}
           renderItem={({ item }) => (
-        <View>
-        <ForumCards navigation={this.props.navigation} fourmid={item.id} titleName={item.title}  imageUrl={item.imageUrl} description={item.description}  />
+              <View>
+                <ForumCards navigation={this.props.navigation} fourmid={item.id} titleName={item.title}  imageUrl={item.imageUrl} description={item.description}  />
+              </View>
+        )}
+        />
       </View>
-          )}
-          />
 
-        <Fab
-            active={this.state.active}
-            direction="up"
-            containerStyle={{ }}
-            style={{ backgroundColor: 'rgb(216, 255, 216)' }}
-            position="bottomRight"
-            onPress={() => this.setState({ active: !this.state.active })}>
-            <FontAwesome5 name={"bars"} brand style={{ fontSize: 20, color:'black'}} />
-          </Fab>
+ 
+        <Footer style={{position:'absolute',bottom: 0}} >
+          <FooterTab >
+            <Button style={{backgroundColor:'rgb(237, 255, 237)', borderRadius:0}}
+              onPress={() => this.props.navigation.navigate('homePage')}>
+                <FontAwesome5 name={"home"} brand style={{ fontSize: 20, color:'#0c420c'}} />
+                <Text style={{color:'#0c420c'}}>HomePage</Text>
+            </Button>
+            <Button style={{backgroundColor:'rgb(216, 255, 216)', borderRadius:0}}
+              onPress={() => this.props.navigation.navigate('forum')}>
+                <FontAwesome5 name={"address-card"} brand style={{ fontSize: 20, color:'#0c420c'}} />
+                <Text style={{color:'#0c420c'}}>Forum</Text>
+            </Button>
+            <Button active style={{ backgroundColor:'rgb(237, 255, 237)' , borderRadius:0}}>
+                <FontAwesome5 name={"chart-line"} brand style={{ fontSize: 20, color:'#0c420c'}} />
+                <Text style={{color:'#0c420c'}}>Prediction</Text>
+            </Button>
+          </FooterTab>
+        </Footer>
 
-      </View>
+    
+
+
+      <Fab
+        active={this.state.active}
+        containerStyle={{ }}
+        style={{ backgroundColor: 'white' , marginBottom:45}}
+        position="bottomRight">
+        <FontAwesome5 name={"chalkboard-teacher"} brand style={{ fontSize: 20, color:'#0c420c'}} />
+      </Fab>
+
+    </View>
+
+
     );
   }
 }
@@ -68,3 +91,22 @@ const styles = StyleSheet.create({
 //  this.props.navigation.navigate('forumQuery', {
 //   forumId:item.id,
 // });
+
+
+
+
+        // {/* <View>
+        //   <FlatList
+        //     contentContainerStyle={{
+        //       flexDirection: 'column',
+        //       width: '100%'
+        //     }}
+        //     data={data}
+        //     keyExtractor={item => item.id.toString()}
+        //     renderItem={({ item }) => (
+        //   <View>
+        //    <ForumCards navigation={this.props.navigation} fourmid={item.id} titleName={item.title}  imageUrl={item.imageUrl} description={item.description}  />
+        //   </View>
+        //   )}
+        //   />
+        // </View> */}

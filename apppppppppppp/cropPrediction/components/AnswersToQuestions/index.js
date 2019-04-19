@@ -1,5 +1,5 @@
 import React, { Component }from 'react';
-import { View, Text, StyleSheet,FlatList,Image } from 'react-native';
+import { View, Text, StyleSheet,FlatList,Image,TouchableOpacity,ScrollView,Dimensions} from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import {Fab} from 'native-base';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -83,18 +83,23 @@ export default class AnswersToQuestions extends Component {
       title:'',
       imageUrl:'',
       description:'',
-      id:''
+      id:'',
+      comments:''
     };
   }
 
   componentDidMount(){
     let myData = this.props.navigation.getParam("card");
-    console.log(myData)
+    
+    console.log(solution[myData.id].comments)
+
     this.setState({
       title:myData.title,
       imageUrl:myData.imageUrl,
       description:myData.description,
-      id:myData.id
+      id:myData.id,
+      comments:solution[myData.id].comments
+      
     })
 
   }
@@ -104,44 +109,48 @@ export default class AnswersToQuestions extends Component {
     return (
       <View>
 
-      <Text>asjfbkjsbdjkfbjkasdbfgmkbsmvbsdcvjksdfjk</Text>
+      <ScrollView>
 
-      <View>
-        <Text>Title : {this.state.title}</Text>
-        <Image style={{alignSelf:"center",paddingRight:7, width:150,height:100,borderRadius:5, margin:7}} source={this.state.imageUrl} ></Image>
+        <View style={{borderWidth:1 , borderRadius:5,borderColor:'#dbdbdb',margin:10 , marginBottom:5}}>
+          <Text style={{textAlign:'center' ,fontSize:24 , color:'#0c420c'}}>Title : {this.state.title}</Text>
+          <Image style={{alignSelf:"center",paddingRight:7, width:Dimensions.get('window').width-50 , height:200, margin:7}} source={this.state.imageUrl} ></Image>
+        </View>
+        
+        <View style={{flexDirection:'row'}}>
+          <Text style={{paddingLeft:15, textAlign:'center',fontSize:20 , color:'#0c420c'}}>{this.state.comments.length} Answers :-</Text>
+          {/* <FontAwesome5 name={"home"} brand style={{ fontSize: 20, color:'#0c420c'}} /> */}
+        </View>
+                
+        <View style={{borderBottomColor: '#dbdbdb',borderBottomWidth: 2 ,marginBottom:5}} />
 
-      </View>
+        <FlatList 
+            extraData={this.state}
+            data = {this.state.comments}
+            numColumns={1}
+            keyExtractor={(item, index) => index.toString()}
+            showsHorizontalScrollIndicator={false}
+            renderItem={i => {
+              const isSelected = true 
+
+              return (
+                <View style={{flex:1,borderWidth:1,borderRadius:5, borderColor:'#dbdbdb',marginLeft:15,marginRight:15,marginBottom:10}}>
+                  
+                  <TouchableOpacity style={{flex:1}}>
+                  
+                    <View style={{flex:1 ,backgroundColor:'#dbdbdb' }}>
+                      <Text style={{paddingLeft:7,fontSize:12 ,marginBottom:2,color:'#0c420c'}}>Name : {i.item.name}</Text>
+                      <Text style={{paddingLeft:7,fontSize:18 ,color:'#0c420c'}}>{i.item.answer}</Text>                       
+                    </View>
+                    
+                  </TouchableOpacity>
+                </View>
+              )
+            }}
+          >
+          </FlatList>
+      </ScrollView>
       
-
-      <Card
-          title={this.props.titleName}
-          image={this.props.imageUrl}>
-            <Text style={{marginBottom: 10}}>
-            { this.props.description }
-            </Text>
-          <View style = {styles.lineStyle} />
-          <View style={{flex: 1, flexDirection: 'row',justifyContent: 'space-between',paddingTop:20,paddingBottom:10}}>
-
-            <Icon
-            name='thumbs-up'
-            type='font-awesome'
-            color='gray' />
-            <Icon
-            name='thumbs-down'
-            type='font-awesome'
-            color='gray' />                
-            <Icon
-            name='share-alt'
-            type='font-awesome'
-            color='gray' />
-
-            </View>
-
-            </Card>
-
-
-
-      </View>
+    </View>
     );
   }
 }

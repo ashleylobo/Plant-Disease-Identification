@@ -1,6 +1,6 @@
 import React, { Component }from 'react';
 import { View, Text, StyleSheet,TouchableOpacity } from 'react-native';
-import { Card, ListItem, Button, Icon } from 'react-native-elements'
+import { Card, ListItem, Icon } from 'react-native-elements'
 
 // constructor(props){
 //   super(props)
