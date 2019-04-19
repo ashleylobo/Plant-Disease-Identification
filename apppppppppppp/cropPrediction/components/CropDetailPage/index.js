@@ -16,7 +16,7 @@ const plants = [
     group:3
   },
   {
-    name: "grape",
+    name: "grapes",
     image:Images.grape,
     planting: "A VERY LONG alright",
     care:"something..",

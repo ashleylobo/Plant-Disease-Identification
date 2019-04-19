@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Modal, View, StyleSheet,Text,Button, Image,PermissionsAndroid} from 'react-native';
+import { Modal, View, StyleSheet,Text,Button, Image,PermissionsAndroid,Dimensions} from 'react-native';
 import ImagePicker from "react-native-image-picker";
 import {TFLiteImageRecognition} from 'react-native-tensorflow-lite';
-
-
+import Dialog, { DialogContent,DialogTitle } from 'react-native-popup-dialog';
+import Instructions from '../Instructions'
 export default class ResultOfPredictedDisease extends Component {
   constructor(props) {
     super(props);
@@ -11,7 +11,8 @@ export default class ResultOfPredictedDisease extends Component {
       path : false,
       uri : false,
       resultObj : {},
-      predicted : false
+      predicted : false,
+      visible:true
     };
 
     try {
@@ -78,6 +79,20 @@ export default class ResultOfPredictedDisease extends Component {
     group=navigation.getParam('group',1)
     return (
       <View>
+          <Dialog
+    visible={this.state.visible}
+    dialogTitle={<DialogTitle style={{backgroundColor:"#c8cace"}} title="Dos            Don't" />}
+    
+      height="75%"
+    onTouchOutside={() => {
+      this.setState({ visible: false });
+    }}
+    style={{flex:1,flexWrap:'wrap'}}
+  >
+    <DialogContent  style={{flex:1,flexWrap:'wrap'}} >
+    <Instructions style={{flex:1,flexWrap:'wrap'}} ></Instructions>
+    </DialogContent>
+  </Dialog>
         <View style={{marginTop: 22}}>
           <Modal
             animationType="slide"

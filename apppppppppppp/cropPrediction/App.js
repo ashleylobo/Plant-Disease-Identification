@@ -24,10 +24,13 @@ import YieldPrediction from './components/YieldPrediction';
 import CropDetailPage from './components/CropDetailPage';
 import AnswersToQuestions from './components/AnswersToQuestions';
 import ForumQuery from './components/ForumQuery';
-
+import Instruction from'./components/Instructions';
 //-----------------------Drawer navigation Bar ---------------------------------------
 
 const Mdn = createDrawerNavigator({
+  resultOfPredictedDisease:{screen:ResultOfPredictedDisease},
+
+  instruction:{screen:Instruction},
   cropSelectionPage:{screen:CropSelectionPage},
 
   loginSignUp:{screen:LoginSignUp},
@@ -37,7 +40,6 @@ const Mdn = createDrawerNavigator({
   loginSignUp:{screen:LoginSignUp},
   forum:{screen:Forum},
   infoAndSelectImage:{screen:InfoAndSelectImage},
-  resultOfPredictedDisease:{screen:ResultOfPredictedDisease},
   yieldPrediction:{screen:YieldPrediction},
   answersToQuestions:{screen:AnswersToQuestions},
   forumQuery:{screen:ForumQuery}
