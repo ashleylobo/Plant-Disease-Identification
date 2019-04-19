@@ -25,21 +25,20 @@ import CropDetailPage from './components/CropDetailPage';
 import AnswersToQuestions from './components/AnswersToQuestions';
 import ForumQuery from './components/ForumQuery';
 import Instruction from'./components/Instructions';
+
 //-----------------------Drawer navigation Bar ---------------------------------------
 
 const Mdn = createDrawerNavigator({
-  resultOfPredictedDisease:{screen:ResultOfPredictedDisease},
-
-  instruction:{screen:Instruction},
   cropSelectionPage:{screen:CropSelectionPage},
 
   loginSignUp:{screen:LoginSignUp},
-
+  instruction:{screen:Instruction},
   cropDetailPage:{screen:CropDetailPage},
   homePage:{screen:HomePage},
   loginSignUp:{screen:LoginSignUp},
   forum:{screen:Forum},
   infoAndSelectImage:{screen:InfoAndSelectImage},
+  resultOfPredictedDisease:{screen:ResultOfPredictedDisease},
   yieldPrediction:{screen:YieldPrediction},
   answersToQuestions:{screen:AnswersToQuestions},
   forumQuery:{screen:ForumQuery}
@@ -67,6 +66,7 @@ const AppNavigator = createStackNavigator({
       headerTitleStyle: {
         fontWeight: "bold",
         fontSize:30,
+        paddingLeft:50,
         color: "white",
         
         alignSelf: 'center',
@@ -77,7 +77,7 @@ const AppNavigator = createStackNavigator({
         backgroundColor: "#0c420c"
       }
     };
-  },headerLayoutPreset: 'center'
+  }
 });
 
 export default createAppContainer(AppNavigator);
