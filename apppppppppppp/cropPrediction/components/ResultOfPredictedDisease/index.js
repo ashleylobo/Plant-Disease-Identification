@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, View, StyleSheet,Text,Button, Image,PermissionsAndroid,Dimensions} from 'react-native';
-import { Button as nButton , Text as nText } from 'native-base'
+// import { Button as nButton , Text as nText } from 'native-base'
 import ImagePicker from "react-native-image-picker";
 import {TFLiteImageRecognition} from 'react-native-tensorflow-lite';
 import Dialog, { DialogContent,DialogTitle } from 'react-native-popup-dialog';
@@ -9,6 +9,7 @@ import models from '../../constants/models';
 import RemedyPage from '../Remedy';
 
 
+import { Root } from 'native-base';
 export default class ResultOfPredictedDisease extends Component {
   constructor(props) {
     super(props);
@@ -92,46 +93,47 @@ export default class ResultOfPredictedDisease extends Component {
     return (
       <View>
           <Dialog
-    visible={this.state.visible}
-    dialogTitle={<DialogTitle style={{backgroundColor:"#c8cace"}} title="Dos            Don't" />}
-    
-      height="75%"
-    onTouchOutside={() => {
-      this.setState({ visible: false });
-      this.getPhotos();
-    }}
-    style={{flex:1,flexWrap:'wrap'}}
-  >
-    <DialogContent  style={{flex:1,flexWrap:'wrap'}} >
-    <Instructions style={{flex:1,flexWrap:'wrap'}} ></Instructions>
-    </DialogContent>
-  </Dialog>
-        <View style={{marginTop: 22}}>
+            visible={this.state.visible}           
+            height="80%"
+            width='95%'
+            onTouchOutside={() => {
+              this.setState({ visible: false });
+            }}
+            style={{flex:1,flexWrap:'wrap'}}
+          >
+          <View style={{flexDirection:'row' , justifyContent:'space-around' , backgroundColor:'#dbdbdb'}}>
 
-          <Modal
-            animationType="slide"
-            transparent={false}
-            visible={this.state.predicted}
-            onRequestClose={() => {
-              Alert.alert('Modal has been closed.');
-            }}>
-            <View style={{marginTop: 22}}>
-              <View>
+            <Text style={{fontSize:28 , color:'green'}}>Do's</Text>
+            <Text style={{fontSize:28, color:'red'}}>Dont's</Text>
+          
+          </View>
+          
+          <View style={{flex:1}}>
+            <Instructions style={{flex:1,flexWrap:'wrap'}} ></Instructions>
+          </View>
+          
+         
+         </Dialog>
+             
+          <View style={{marginTop: 22}}>
 
-                <View style={{justifyContent:'center'}}>
-                  <View style={{alignSelf:'center', borderRadius:5 ,width:Dimensions.get('window').width-150 , borderWidth:1 , color:'#dbdbdb',margin:10}}>
-                    <Text style={{fontSize:25 , textAlign:'center'}}>Disease</Text>
-                    <Text style={{fontSize:15 , textAlign:'center', margin:5}}>
-                      {this.state.name}
-                    </Text>
-                  </View>
+            <Modal
+              animationType="slide"
+              transparent={false}
+              visible={this.state.predicted}
+              onRequestClose={() => {
+                Alert.alert('Modal has been closed.');
+              }}>
+              <View style={{marginTop: 22}}>
+                <View>
 
-                  <View style={{alignSelf:'center',borderRadius:5 ,width:Dimensions.get('window').width-150, borderWidth:1 , color:'#dbdbdb',margin:10}}>
-                    <Text style={{fontSize:25 , textAlign:'center'}}>Accuracy</Text>
-                    <Text style={{fontSize:15 , textAlign:'center', margin:5}}>
-                    {this.state.confidence}
-                    </Text>
-                  </View>
+            <View style={{justifyContent:'center'}}>
+              <View style={{alignSelf:'center', borderRadius:5 ,width:Dimensions.get('window').width-150 , borderWidth:1 , color:'#dbdbdb',margin:10}}>
+                <Text style={{fontSize:25 , textAlign:'center'}}>Disease</Text>
+                <Text style={{fontSize:15 , textAlign:'center', margin:5}}>
+                  {this.state.name}
+                </Text>
+              </View>
 
                   {
                     this.state.showRemedy &&
@@ -153,6 +155,11 @@ export default class ResultOfPredictedDisease extends Component {
                 <Button title="Go to Forum" 
                 onPress={()=>this.props.navigation.navigate("forum")}
                 />                
+
+            <Button title="Close" onPress={() => {
+                this.setModalVisible(!this.state.predicted);
+              }}
+            />
 
               </View>
             </View>

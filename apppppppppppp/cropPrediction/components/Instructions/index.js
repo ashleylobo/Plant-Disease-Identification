@@ -15,67 +15,60 @@ export default class LoginSignUp extends Component {
     const {headerTitle,textFormat,headerTitle2,imageFormat}=styles  
     return (
       <ScrollView>
-      <View style={{flex:1 ,flexWrap:'wrap'}}>
-      <View style={{ flexDirection: 'row', }}>
-      
-      <View style={{width:'50%'}} >
-      
-      <View style={{flexDirection:'row',marginTop:10}}>
-          <Thumbnail source={Images.right}style={{height:25,width:30,}}  />
-            <Text style={textFormat}>   Take picture in a well lighted area</Text>
+
+        <View style={{flex:1, flexDirection: 'row'}}>
         
-        
-        </View>
-            <Image source={Images.light} style={imageFormat}/>
-            
+          <View style={{flex:0.5}} >
+
+              <View style={{flexDirection:'row',marginTop:10 }}>
+                <Thumbnail source={Images.right}style={{marginLeft:10,height:25,width:25}}  />
+                <Text style={{marginLeft:10 , flex:0.9}}>Take picture in a well lighted area</Text>
+              </View>
+              
+              <Image source={Images.light} style={imageFormat}/>
+              
+              <View style={{flexDirection:'row',marginTop:10}}>
+                <Thumbnail source={Images.right}style={{marginLeft:10,height:25,width:25}}  />
+                <Text style={{marginLeft:10, flex:0.9}}>Take picture at proper distance</Text>
+              </View>
+              
+              <Image source={Images.distance} style={imageFormat}/>
+              
+              <View style={{flexDirection:'row',marginTop:10}}>
+                <Thumbnail source={Images.right}style={{marginLeft:10,height:25,width:25}}  />
+                <Text style={{marginLeft:10, flex:0.9}}>Click a clean and clear picture</Text>
+              </View>
+              
+              <Image source={Images.notblurry} style={imageFormat}/>    
+          </View>
+
+
+          <View style={{flex:0.5}}>
+
             <View style={{flexDirection:'row',marginTop:10}}>
-<             Thumbnail source={Images.right}style={{height:25,width:30,}}  />
-            <Text style={textFormat}>   Take picture at proper distance</Text>
+              <Thumbnail source={Images.wrong}style={{marginLeft:10,height:25,width:25}}  />
+              <Text style={{marginLeft:10, flex:0.9}} >Don't click in dark environment</Text>       
             </View>
             
-            <Image source={Images.distance} style={imageFormat}/>
-            
+            <Image source={Images.dark} style={imageFormat}/>
             <View style={{flexDirection:'row',marginTop:10}}>
-<             Thumbnail source={Images.right}style={{height:25,width:30,}}  />
-            <Text style={textFormat}>   Click a clear picture</Text>
-           </View>
-            
-            <Image source={Images.notblurry} style={imageFormat}/>
+              <Thumbnail source={Images.wrong}style={{marginLeft:10,height:25,width:25}}  />
+              <Text style={{marginLeft:10, flex:0.9}}>Don't click picture far and small </Text>
+            </View>
 
-      
-      </View>
-      <View style={{ width:'50%'}}>
+            <Image source={Images.far} style={imageFormat}/>
 
-        <View style={{flexDirection:'row',marginTop:10}}>
-        <Thumbnail source={Images.wrong}style={{height:25,width:30}}  />
-        <Text style={textFormat} >   Don't click in dark environment</Text>
-       
-        </View>
-        <Image source={Images.dark} style={imageFormat}/>
-        <View style={{flexDirection:'row',marginTop:10}}>
-        <Thumbnail source={Images.wrong}style={{height:25,width:30,}}  />
-        
-        <Text>   Don't click picture far </Text>
-      
-        </View>
+            <View style={{flexDirection:'row',marginTop:10}}>
+              <Thumbnail source={Images.wrong}style={{marginLeft:10,height:25,width:25}}  />
+              <Text style={{marginLeft:10, flex:0.9}}>Don't click blurry image</Text>  
+            </View>
+              
+            <Image source={Images.blurry} style={imageFormat}/>
 
-        <Image source={Images.far} style={imageFormat}/>
-
-        <View style={{flexDirection:'row',marginTop:10}}>
-       <Thumbnail source={Images.right}style={{height:25,width:30,}}  />
-        <Text>   Don't click blurry image</Text>
-          
           
           </View>
-          
-          <Image source={Images.blurry} style={imageFormat}/>
+        </View>
 
-      
-      </View>
-      </View>
-
-      
-      </View>
       </ScrollView>
       );
   }
@@ -95,16 +88,15 @@ const styles=StyleSheet.create({
   },
   textFormat:{
       flex:1,
-      flexWrap:'wrap'
-
-  
+      flexWrap:'wrap',
+      marginLeft:10
   },
   imageFormat:{
     height:130,
     width:140,
     borderRadius:10,
     marginLeft:10,
-    marginTop:10
-   
+    marginTop:10,
+    alignSelf: 'center',   
   }
 })
