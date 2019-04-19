@@ -1,24 +1,102 @@
 import React, { Component }from 'react';
-import { View, Text, StyleSheet,FlatList } from 'react-native';
+import { View, Text, StyleSheet,FlatList,Image } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import {Fab} from 'native-base';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-const data = [
-  {id:1,title:"What is This?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", imageUrl:"https://i.imgur.com/v2HxvF3.jpg"},
-  {id:2,title:"Tomato Problem" , description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries." ,imageUrl:"https://i.imgur.com/aOGCxz5.jpg"},
-  {id:3,title:"Corn leaf Pink?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", mageUrl:"https://i.imgur.com/v2HxvF3.jpg"},
-  {id:4,title:"Tomato Leaf turning pale yellow?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.",  imageUrl:"https://i.imgur.com/aOGCxz5.jpg"},
-  {id:5,title:"Help needed Tomato?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.",mageUrl:"https://i.imgur.com/v2HxvF3.jpg"},
-  {id:6,title:"Cherry plant spots",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.",  imageUrl:"https://i.imgur.com/aOGCxz5.jpg"},
-];
+// const data = [
+//   {id:1,title:"What is This?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", imageUrl:"https://i.imgur.com/v2HxvF3.jpg"},
+//   {id:2,title:"Tomato Problem" , description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries." ,imageUrl:"https://i.imgur.com/aOGCxz5.jpg"},
+//   {id:3,title:"Corn leaf Pink?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", mageUrl:"https://i.imgur.com/v2HxvF3.jpg"},
+//   {id:4,title:"Tomato Leaf turning pale yellow?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.",  imageUrl:"https://i.imgur.com/aOGCxz5.jpg"},
+//   {id:5,title:"Help needed Tomato?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.",mageUrl:"https://i.imgur.com/v2HxvF3.jpg"},
+//   {id:6,title:"Cherry plant spots",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.",  imageUrl:"https://i.imgur.com/aOGCxz5.jpg"},
+// ];
 
+const solution = {
+  1:{ title:"What is This?",
+  description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", 
+  imageUrl:require('../../assets/images/advisory_vector.jpeg'),
+  comments:[
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons A",
+    id:1},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons B",
+    id:2},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons C",
+    id:3},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons D",
+    id:4},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons E",
+    id:5}
+  ]},
+  2:{ title:"What is This?",
+  description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", 
+  imageUrl:require('../../assets/images/advisory_vector.jpeg'),
+  comments:[
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons A",
+    id:1},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons B",
+    id:2},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons C",
+    id:3},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons D",
+    id:4},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons E",
+    id:5}
+  ]},
+  3:{ title:"What is This?",
+  description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", 
+  imageUrl:require('../../assets/images/advisory_vector.jpeg'),
+  comments:[
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons A",
+    id:1},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons B",
+    id:2},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons C",
+    id:3},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons D",
+    id:4},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons E",
+    id:5}
+  ]}
+}
 
 export default class AnswersToQuestions extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      title:'',
+      imageUrl:'',
+      description:'',
+      id:''
     };
+  }
+
+  componentDidMount(){
+    let myData = this.props.navigation.getParam("card");
+    console.log(myData)
+    this.setState({
+      title:myData.title,
+      imageUrl:myData.imageUrl,
+      description:myData.description,
+      id:myData.id
+    })
+
   }
 
   render() {
@@ -26,37 +104,18 @@ export default class AnswersToQuestions extends Component {
     return (
       <View>
 
-        {/* <FlatList
-          contentContainerStyle={{
+      <Text>asjfbkjsbdjkfbjkasdbfgmkbsmvbsdcvjksdfjk</Text>
 
-            flexDirection: 'column',
+      <View>
+        <Text>Title : {this.state.title}</Text>
+        <Image style={{alignSelf:"center",paddingRight:7, width:150,height:100,borderRadius:5, margin:7}} source={this.state.imageUrl} ></Image>
 
-            width: '100%'
-          }}
-          data={data}
-          keyExtractor={item => item.id.toString()}
-          renderItem={({ item }) => (
-        <View>
-        <ForumCards titleName={item.title}  imageUrl={item.imageUrl} description={item.description}  />
       </View>
-          )}
-          />
-
-        <Fab
-            active={this.state.active}
-            direction="up"
-            containerStyle={{ }}
-            style={{ backgroundColor: 'rgb(216, 255, 216)' }}
-            position="bottomRight"
-            onPress={() => this.setState({ active: !this.state.active })}>
-            <FontAwesome5 name={"bars"} brand style={{ fontSize: 20, color:'black'}} />
-          </Fab> */}
-
-<Text>asjfbkjsbdjkfbjkasdbfgmkbsmvbsdcvjksdfjk</Text>
+      
 
       <Card
           title={this.props.titleName}
-          image={{uri:this.props.imageUrl}}>
+          image={this.props.imageUrl}>
             <Text style={{marginBottom: 10}}>
             { this.props.description }
             </Text>

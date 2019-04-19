@@ -63,9 +63,12 @@ const AppNavigator = createStackNavigator({
       ),
       title:("Farmitra"),
       headerTitleStyle: {
+        textAlign:'center',
+        justifyContent:'center',
+        alignSelf:'center',
+        alignContent:'center',
         fontWeight: "bold",
         fontSize:30,
-        paddingLeft:50,
         color: "white",
         
         alignSelf: 'center',

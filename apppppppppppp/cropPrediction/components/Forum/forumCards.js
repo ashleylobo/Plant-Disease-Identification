@@ -18,12 +18,12 @@ export default class ForumCards extends Component {
     console.warn(this.props.description)
       return (
         
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('answersToQuestions',{card:{title:this.props.titleName,imageUrl:this.props.imageUrl,description:this.props.description}})}
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('answersToQuestions',{card:{id:this.props.fourmid,title:this.props.titleName,imageUrl:this.props.imageUrl,description:this.props.description}})}
         >
 
         <Card
             title={this.props.titleName}
-            image={{uri:this.props.imageUrl}}>
+            image={this.props.imageUrl}>
             <Text style={{marginBottom: 10}}>
             { this.props.description }
             </Text>
