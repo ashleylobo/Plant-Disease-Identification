@@ -22,33 +22,72 @@ export default class ResultOfPredictedDisease extends Component {
       showRemedy : false
     };
 
-    try {
-      // Initialize Tensorflow Lite Image Recognizer
+    // try {
+    //   // Initialize Tensorflow Lite Image Recognizer
 
-      const {navigation} = this.props
-      group = parseInt( navigation.getParam('group',1) )
+    //   const {navigation} = this.props
+    //   group = parseInt( navigation.getParam('group',1) )
 
-      this.classifier = new TFLiteImageRecognition({
-        model: `${models[group - 1]}.tflite`,  // Your tflite model in assets folder.
-        labels: `${models[group - 1]}.txt` // Your label file
-      })
+
+    //   this.classifier = new TFLiteImageRecognition({
+    //     model: `${models[group - 1]}.tflite`,  // Your tflite model in assets folder.
+    //     labels: `${models[group - 1]}.txt` // Your label file
+    //   })      
  
-    } catch(err) {
-      alert(err)
-    }
+    // } catch(err) {
+    //   alert(err)
+    // }
 
   }
 
-  
+  async checkIfLeaf(imagePath) {
 
-  async classifyImage(imagePath) {
     try {
-      const results = await this.classifier.recognize({
+
+      const checker = new TFLiteImageRecognition({
+        model: `leaf.tflite`,  // Your tflite model in assets folder.
+        labels: `leaf.txt` // Your label file
+      })      
+
+      var results = await checker.recognize({
         image: imagePath, // Your image path.
         inputShape: 224, // the input shape of your model. If none given, it will be default to 224.
       })
  
-      const resultObj = {
+      if ( results[0].name !== 'leaf' ){
+        console.log(resultObj)
+        alert("Please Click Proper Leaf Image")
+
+      }else{
+        this.classifyImage(imagePath)
+        // console.warn("Done")
+      }
+
+    } catch(err) {
+      alert("Please Click Proper Leaf Image")
+    }
+
+  }
+
+  async classifyImage(imagePath) {
+
+    try {
+
+      const {navigation} = this.props;
+      group = parseInt( navigation.getParam('group',1) )
+
+
+      const classifier = new TFLiteImageRecognition({
+        model: `${models[group - 1]}.tflite`,  // Your tflite model in assets folder.
+        labels: `${models[group - 1]}.txt` // Your label file
+      }) 
+
+      var results = await classifier.recognize({
+        image: imagePath, // Your image path.
+        inputShape: 224, // the input shape of your model. If none given, it will be default to 224.
+      })
+ 
+      var resultObj = {
                 name: results[0].name,  
                 confidence: results[0].confidence*100, 
                 inference: results[0].inference + "ms"
@@ -98,6 +137,7 @@ export default class ResultOfPredictedDisease extends Component {
             width='95%'
             onTouchOutside={() => {
               this.setState({ visible: false });
+              this.getPhotos();
             }}
             style={{flex:1,flexWrap:'wrap'}}
           >
@@ -166,7 +206,6 @@ export default class ResultOfPredictedDisease extends Component {
           </Modal>
 
         </View>
-                  <Text>Crop of group {group}</Text>
         
         <Button title="Take Photo" onPress={this.getPhotos} />
         
@@ -176,7 +215,7 @@ export default class ResultOfPredictedDisease extends Component {
                   source={{ uri : this.state.uri }}
            />
         }
-        <Button title="Result Of Predicted Disease" onPress={() => this.classifyImage(this.state.path)}></Button>
+        <Button title="Result Of Predicted Disease" onPress={() => this.checkIfLeaf(this.state.path)}></Button>
       </View>
     );
   }
