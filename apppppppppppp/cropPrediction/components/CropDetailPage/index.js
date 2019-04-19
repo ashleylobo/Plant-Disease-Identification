@@ -119,19 +119,30 @@ export default class CropDetailPage extends Component {
 
     }
    
-    componentDidMount(){
-      f=()=>this.props.navigation.navigate('homePage')
-      BackHandler.addEventListener('hardwareBackPress', function() {
-        // this.onMainScreen and this.goBack are just examples, you need to use your own implementation here
-        // Typically you would use the navigator here to go to the last state.
-        f()
-        
-      });
+    // componentDidMount(){
+    //   f=()=>this.props.navigation.navigate('homePage')
+    //   BackHandler.addEventListener('hardwareBackPress', function() {
+    //     f()
+    //   });
+    // }
   
-    }
-    showPicker=()=>{
 
-  
+    componentDidMount(){
+      BackHandler.addEventListener('hardwareBackPress', this.f);
+    }
+    
+    componentWillUnmount(){
+          BackHandler.removeEventListener('hardwareBackPress', this.f);
+    }
+    
+    f = () => {
+      this.props.navigation.navigate('homePage')
+      return true;
+    }
+
+
+
+    showPicker=()=>{
         ImagePicker.showImagePicker(options, (response) => {
           console.log('Response = ', response);
         
