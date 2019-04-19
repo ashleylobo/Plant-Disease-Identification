@@ -7,6 +7,14 @@ const images= {
     corn     : require('./images/corn.jpg'),
     apple    : require('./images/apple.jpg'),
     grape    : require('./images/grape.jpg'),
+    right:require("./images/right.jpg"),
+    wrong:require('./images/wrong.jpg'),
+    dark:require("./images/dark.jpeg"),
+    distance:require("./images/distance.jpg"),
+    blurry:require("./images/blurry.jpg"),
+    far:require("./images/far.jpg"),
+    light:require("./images/light.jpg"),
+    notblurry:require("./images/notblurry.jpeg"),
 
 }
 export default images   

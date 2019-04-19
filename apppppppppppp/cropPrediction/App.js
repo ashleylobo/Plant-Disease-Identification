@@ -24,6 +24,7 @@ import YieldPrediction from './components/YieldPrediction';
 import CropDetailPage from './components/CropDetailPage';
 import AnswersToQuestions from './components/AnswersToQuestions';
 import ForumQuery from './components/ForumQuery';
+import Instruction from'./components/Instructions';
 
 //-----------------------Drawer navigation Bar ---------------------------------------
 
@@ -59,6 +60,7 @@ const page3 = createDrawerNavigator({
 },
 );
 const page4 = createDrawerNavigator({
+  instruction:{screen:Instruction},
   cropDetailPage:{screen:CropDetailPage},
 },
 {
@@ -138,6 +140,7 @@ const AppNavigator = createStackNavigator({
       headerTitleStyle: {
         fontWeight: "bold",
         fontSize:30,
+        paddingLeft:50,
         color: "white",
         
         alignSelf: 'center',
@@ -148,7 +151,7 @@ const AppNavigator = createStackNavigator({
         backgroundColor: "#0c420c"
       }
     };
-  },headerLayoutPreset: 'center'
+  }
 });
 
 export default createAppContainer(AppNavigator);

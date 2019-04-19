@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { Modal, View, StyleSheet,Text,Button, Image,PermissionsAndroid,Dimensions} from 'react-native';
+// import { Button as nButton , Text as nText } from 'native-base'
 import ImagePicker from "react-native-image-picker";
 import {TFLiteImageRecognition} from 'react-native-tensorflow-lite';
+import Dialog, { DialogContent,DialogTitle } from 'react-native-popup-dialog';
+import Instructions from '../Instructions'
+import models from '../../constants/models';
+import RemedyPage from '../Remedy';
 
 
+import { Root } from 'native-base';
 export default class ResultOfPredictedDisease extends Component {
   constructor(props) {
     super(props);
@@ -11,30 +17,77 @@ export default class ResultOfPredictedDisease extends Component {
       path : false,
       uri : false,
       resultObj : {},
-      predicted : false
+      predicted : false,
+      visible:true,
+      showRemedy : false
     };
 
+    // try {
+    //   // Initialize Tensorflow Lite Image Recognizer
+
+    //   const {navigation} = this.props
+    //   group = parseInt( navigation.getParam('group',1) )
+
+
+    //   this.classifier = new TFLiteImageRecognition({
+    //     model: `${models[group - 1]}.tflite`,  // Your tflite model in assets folder.
+    //     labels: `${models[group - 1]}.txt` // Your label file
+    //   })      
+ 
+    // } catch(err) {
+    //   alert(err)
+    // }
+
+  }
+
+  async checkIfLeaf(imagePath) {
+
     try {
-      // Initialize Tensorflow Lite Image Recognizer
-      this.classifier = new TFLiteImageRecognition({
-        model: 'cropfive.tflite',  // Your tflite model in assets folder.
-        labels: 'label.txt' // Your label file
+
+      const checker = new TFLiteImageRecognition({
+        model: `leaf.tflite`,  // Your tflite model in assets folder.
+        labels: `leaf.txt` // Your label file
+      })      
+
+      var results = await checker.recognize({
+        image: imagePath, // Your image path.
+        inputShape: 224, // the input shape of your model. If none given, it will be default to 224.
       })
  
+      if ( results[0].name !== 'leaf' ){
+        console.log(resultObj)
+        alert("Please Click Proper Leaf Image")
+
+      }else{
+        this.classifyImage(imagePath)
+        // console.warn("Done")
+      }
+
     } catch(err) {
-      alert(err)
+      alert("Please Click Proper Leaf Image")
     }
 
   }
 
   async classifyImage(imagePath) {
+
     try {
-      const results = await this.classifier.recognize({
+
+      const {navigation} = this.props;
+      group = parseInt( navigation.getParam('group',1) )
+
+
+      const classifier = new TFLiteImageRecognition({
+        model: `${models[group - 1]}.tflite`,  // Your tflite model in assets folder.
+        labels: `${models[group - 1]}.txt` // Your label file
+      }) 
+
+      var results = await classifier.recognize({
         image: imagePath, // Your image path.
         inputShape: 224, // the input shape of your model. If none given, it will be default to 224.
       })
  
-      const resultObj = {
+      var resultObj = {
                 name: results[0].name,  
                 confidence: results[0].confidence*100, 
                 inference: results[0].inference + "ms"
@@ -78,52 +131,81 @@ export default class ResultOfPredictedDisease extends Component {
     group=navigation.getParam('group',1)
     return (
       <View>
-        <View style={{marginTop: 22}}>
+          <Dialog
+            visible={this.state.visible}           
+            height="80%"
+            width='95%'
+            onTouchOutside={() => {
+              this.setState({ visible: false });
+              this.getPhotos();
+            }}
+            style={{flex:1,flexWrap:'wrap'}}
+          >
+          <View style={{flexDirection:'row' , justifyContent:'space-around' , backgroundColor:'#dbdbdb'}}>
 
-          <Modal
-            animationType="slide"
-            transparent={false}
-            visible={this.state.predicted}
-            onRequestClose={() => {
-              Alert.alert('Modal has been closed.');
-            }}>
-            <View style={{marginTop: 22}}>
-              <View>
+            <Text style={{fontSize:28 , color:'green'}}>Do's</Text>
+            <Text style={{fontSize:28, color:'red'}}>Dont's</Text>
+          
+          </View>
+          
+          <View style={{flex:1}}>
+            <Instructions style={{flex:1,flexWrap:'wrap'}} ></Instructions>
+          </View>
+          
+         
+         </Dialog>
+             
+          <View style={{marginTop: 22}}>
 
-                <View style={{justifyContent:'center'}}>
-                  <View style={{alignSelf:'center', borderRadius:5 ,width:Dimensions.get('window').width-150 , borderWidth:1 , color:'#dbdbdb',margin:10}}>
-                    <Text style={{fontSize:25 , textAlign:'center'}}>Disease</Text>
-                    <Text style={{fontSize:15 , textAlign:'center', margin:5}}>
-                      {this.state.name}
-                    </Text>
-                  </View>
+            <Modal
+              animationType="slide"
+              transparent={false}
+              visible={this.state.predicted}
+              onRequestClose={() => {
+                Alert.alert('Modal has been closed.');
+              }}>
+              <View style={{marginTop: 22}}>
+                <View>
 
-                  <View style={{alignSelf:'center',borderRadius:5 ,width:Dimensions.get('window').width-150, borderWidth:1 , color:'#dbdbdb',margin:10}}>
-                    <Text style={{fontSize:25 , textAlign:'center'}}>Accuracy</Text>
-                    <Text style={{fontSize:15 , textAlign:'center', margin:5}}>
-                    {this.state.confidence}
-                    </Text>
-                  </View>
+            <View style={{justifyContent:'center'}}>
+              <View style={{alignSelf:'center', borderRadius:5 ,width:Dimensions.get('window').width-150 , borderWidth:1 , color:'#dbdbdb',margin:10}}>
+                <Text style={{fontSize:25 , textAlign:'center'}}>Disease</Text>
+                <Text style={{fontSize:15 , textAlign:'center', margin:5}}>
+                  {this.state.name}
+                </Text>
+              </View>
 
-                  <View style={{alignSelf:'center',borderRadius:5 ,width:Dimensions.get('window').width-150, borderWidth:1 , color:'#dbdbdb',margin:10}}>
-                    <Text style={{fontSize:25 , textAlign:'center'}}>Time Inference</Text>
-                    <Text style={{fontSize:15 , textAlign:'center', margin:5}}>
-                      {this.state.inference}
-                    </Text>
-                  </View>    
+                  {
+                    this.state.showRemedy &&
+                    <RemedyPage name={ this.state.name} />
+                  }
+
+
                 </View>
+           
 
-                <Button title="Close" onPress={() => {
+                <Button style={{ paddingTop : 10 }} title="Close" onPress={() => {
                     this.setModalVisible(!this.state.predicted);
                   }}
                 />
+                <Button title="Show Tips/Remedy" onPress={() => {
+                    this.setState( { showRemedy : true } );
+                  }}
+                />
+                <Button title="Go to Forum" 
+                onPress={()=>this.props.navigation.navigate("forum")}
+                />                
+
+            <Button title="Close" onPress={() => {
+                this.setModalVisible(!this.state.predicted);
+              }}
+            />
 
               </View>
             </View>
           </Modal>
 
         </View>
-                  <Text>Crop of group {group}</Text>
         
         <Button title="Take Photo" onPress={this.getPhotos} />
         
@@ -133,7 +215,7 @@ export default class ResultOfPredictedDisease extends Component {
                   source={{ uri : this.state.uri }}
            />
         }
-        <Button title="Result Of Predicted Disease" onPress={() => this.classifyImage(this.state.path)}></Button>
+        <Button title="Result Of Predicted Disease" onPress={() => this.checkIfLeaf(this.state.path)}></Button>
       </View>
     );
   }
@@ -156,4 +238,9 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  buttonStyle : {
+    marginTop: 10,
+    paddingTop : 10,
+    width : 50
+  }
 });
