@@ -46,7 +46,11 @@ export default class HomePage extends Component {
   
                   return (
                       <View style={{ flex:1 , margin:5}}>
-                        <TouchableOpacity >
+                        <TouchableOpacity onPress={()=>{
+                          console.warn("pressed")
+                          console.log("pressed")
+
+                          this.props.navigation.navigate('cropDetailPage',{name:i.item.title} )}} >
                           <Image style={{alignSelf:"center", width:75,height:75,borderRadius:38, margin:7}} source={i.item.url} ></Image>
                           <Text style={{textAlign:'center' , color:'#0c420c' , fontSize:15}} >{i.item.title}</Text>
                         </TouchableOpacity>

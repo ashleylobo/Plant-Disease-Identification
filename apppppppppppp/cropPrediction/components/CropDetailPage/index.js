@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View,Button ,Image,ScrollView} from 'react-native'
+import { Text, StyleSheet, View,Button ,Image,ScrollView,BackHandler} from 'react-native'
 import ImagePicker from 'react-native-image-picker';
 import {Fab,Icon} from 'native-base';
 import Toggle from '../ToggleComponent'
@@ -72,6 +72,22 @@ const plants = [
       pest_diseases:"sdsp",
       harves:"saxd"
     },
+    {
+      name: "melon",
+      image:require('../../assets/base_plants/apple.jpg'),
+      planting: "A VERY LONG description alright",
+      care:"something..",
+      pest_diseases:"sdsp",
+      harves:"saxd"
+    },
+    {
+    name: "onion",
+    image:require('../../assets/base_plants/apple.jpg'),
+    planting: "A VERY LONG alright",
+    care:"something..",
+    pest_diseases:"sdsp",
+    harves:"saxd"
+  }
   ]
   
 
@@ -86,9 +102,9 @@ const options = {
     takePhotoButtonTitle:"Capture Image",
     chooseFromLibraryButtonTitle:"Pick image from Gallery"
   };
-
+ 
   
-export default class index extends Component {
+export default class CropDetailPage extends Component {
 
     constructor(props){
         super(props);
@@ -100,8 +116,19 @@ export default class index extends Component {
             active: false 
 
         }
-    }
 
+    }
+   
+    componentDidMount(){
+      f=()=>this.props.navigation.navigate('homePage')
+      BackHandler.addEventListener('hardwareBackPress', function() {
+        // this.onMainScreen and this.goBack are just examples, you need to use your own implementation here
+        // Typically you would use the navigator here to go to the last state.
+        f()
+        
+      });
+  
+    }
     showPicker=()=>{
 
   
@@ -133,6 +160,7 @@ export default class index extends Component {
       for (x=0;x< 8; x++){
         if(plants[x].name==cropName){
           this.state.index=x;
+          console.log("Plant chosen ",x,cropName)
           break;
         }
         console.log(plants[x].name)
@@ -149,6 +177,7 @@ export default class index extends Component {
         </View>
       )
     }
+ 
   render() {
 
 
