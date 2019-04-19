@@ -144,6 +144,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-share')
     implementation project(':react-native-tensorflow-lite')
     implementation project(':react-native-image-picker')
     implementation project(':react-native-gesture-handler')

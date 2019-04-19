@@ -13,7 +13,8 @@ const routes = [
                 {title:"forum",name:"Forum", icon:"comments"},
                 {title:"infoAndSelectImage",name:"InfoAndSelectImage", icon:"comment-dots"},
                 {title:"resultOfPredictedDisease",name:"ResultOfPredictedDisease", icon:"comment-dots"},
-                {title:"answersToQuestions",name:"AnswersToQuestions", icon:"comment-dots"}];
+                // {title:"answersToQuestions",name:"AnswersToQuestions", icon:"comment-dots"},
+              ];
 
 
 

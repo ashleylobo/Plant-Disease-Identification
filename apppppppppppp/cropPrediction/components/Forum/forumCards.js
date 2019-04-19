@@ -1,6 +1,7 @@
 import React, { Component }from 'react';
 import { View, Text, StyleSheet,TouchableOpacity } from 'react-native';
 import { Card, ListItem, Icon } from 'react-native-elements'
+// import Share, {ShareShn} from 'react-native-share';
 
 // constructor(props){
 //   super(props)
