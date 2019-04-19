@@ -24,6 +24,7 @@ import YieldPrediction from './components/YieldPrediction';
 import CropDetailPage from './components/CropDetailPage';
 import AnswersToQuestions from './components/AnswersToQuestions';
 import ForumQuery from './components/ForumQuery';
+import Instruction from'./components/Instructions';
 
 //-----------------------Drawer navigation Bar ---------------------------------------
 
@@ -31,7 +32,7 @@ const Mdn = createDrawerNavigator({
   cropSelectionPage:{screen:CropSelectionPage},
 
   loginSignUp:{screen:LoginSignUp},
-
+  instruction:{screen:Instruction},
   cropDetailPage:{screen:CropDetailPage},
   homePage:{screen:HomePage},
   loginSignUp:{screen:LoginSignUp},

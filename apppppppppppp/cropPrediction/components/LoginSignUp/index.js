@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text,StyleSheet,Image ,ScrollView,Dimensions } from 'react-native';
 
 import {Card,CardItem, Thumbnail, Button, Icon, Left,Body,Right,Content,Container} from 'native-base';
-
+import Images from "assets/images"
 export default class LoginSignUp extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +25,7 @@ export default class LoginSignUp extends Component {
             <CardItem>
               <View style={{flex:1,flexDirection:'row'}} >
               <View  >
-              <Thumbnail source={require("../../assets/images/right.jpg")}style={{height:25,width:30}}  />
+              <Thumbnail source={Images.right}style={{height:25,width:30}}  />
                   <Text style={textFormat}>Take picture in a well lighted area</Text>
                 
               </View>
@@ -33,7 +33,7 @@ export default class LoginSignUp extends Component {
 
                 <View>
   
-                <Thumbnail source={require("../../assets/images/wrong.jpg")}style={{height:25,width:30}}  />
+                <Thumbnail source={Images.wrong}style={{height:25,width:30}}  />
         
   
                   
@@ -45,17 +45,17 @@ export default class LoginSignUp extends Component {
             </CardItem>
             <CardItem>
               <Body>
-                <Image source={require("../../assets/rightwrong/light.jpg")} style={{height:130,width:140, borderRadius:10}}/>
+                <Image source={Images.light} style={{height:130,width:140, borderRadius:10}}/>
               
               </Body>
               <Body>
-                <Image source={require("../../assets/rightwrong/dark.jpeg")} style={{height:130,width:140, borderRadius:10}}/>
+                <Image source={Images.dark} style={{height:130,width:140, borderRadius:10}}/>
                 
               </Body>
             </CardItem>
             <CardItem>
               <View>
-              <Thumbnail source={require("../../assets/images/right.jpg")}style={{height:25,width:30}}  />
+              <Thumbnail source={Images.right}style={{height:25,width:30}}  />
 
                 
                   <Text style={textFormat} >Take picture at proper distance</Text>
@@ -66,7 +66,7 @@ export default class LoginSignUp extends Component {
 
               <View>
 
-              <Thumbnail source={require("../../assets/images/wrong.jpg")}style={{height:25,width:30}}  />
+              <Thumbnail source={Images.wrong}style={{height:25,width:30}}  />
       
 
   
@@ -76,18 +76,18 @@ export default class LoginSignUp extends Component {
             </CardItem>
             <CardItem>
               <Body>
-                <Image source={require("../../assets/rightwrong/distance.jpg")} style={{height:130,width:140,borderRadius:10}}/>
+                <Image source={Images.distance} style={{height:130,width:140,borderRadius:10}}/>
                
               </Body>
               <Body>
-                <Image source={require("../../assets/rightwrong/far.jpg")} style={{height:130,width:140,borderRadius:10}}/>
+                <Image source={Images.far} style={{height:130,width:140,borderRadius:10}}/>
               
               </Body>
             </CardItem>
             <CardItem>
               <View style={{flex:1,flexDirection:'row'}} >
               <View> 
-              <Thumbnail source={require("../../assets/images/right.jpg")}style={{height:25,width:30}}  />
+              <Thumbnail source={Images.right}style={{height:25,width:30}}  />
 
               
                   <Text style={textFormat} >Click a clear picture</Text>
@@ -95,7 +95,7 @@ export default class LoginSignUp extends Component {
                   </View>
                   <View>        
 
-                 <Thumbnail source={require("../../assets/images/wrong.jpg")}style={{height:25,width:30}}  />
+                 <Thumbnail source={Images.wrong}style={{height:25,width:30}}  />
       
 
                 
@@ -107,11 +107,11 @@ export default class LoginSignUp extends Component {
             </CardItem>
             <CardItem>
               <Body>
-                <Image source={require("../../assets/rightwrong/notblurry.jpeg")} style={{height:130,width:140, borderRadius:10}}/>
+                <Image source={Images.notblurry} style={{height:130,width:140, borderRadius:10}}/>
                 
               </Body>
               <Body>
-                <Image source={require("../../assets/rightwrong/blurry.jpg")} style={{height:130,width:140, borderRadius:10}}/>
+                <Image source={Images.blurry} style={{height:130,width:140, borderRadius:10}}/>
                 
               </Body>
             </CardItem>

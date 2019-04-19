@@ -67,11 +67,13 @@ export default class HomePage extends Component {
 
             <Footer >
               <FooterTab >
-                <Button style={{backgroundColor:'rgb(216, 255, 216)', borderRadius:0}}>
+                <Button style={{backgroundColor:'rgb(216, 255, 216)', borderRadius:0}}
+                  onPress={() => this.props.navigation.navigate('homePage')}>
                     <FontAwesome5 name={"home"} brand style={{ fontSize: 20, color:'#0c420c'}} />
                     <Text style={{color:'#0c420c'}}>HomePage</Text>
                 </Button>
-                <Button style={{backgroundColor:'rgb(237, 255, 237)', borderRadius:0}}>
+                <Button style={{backgroundColor:'rgb(237, 255, 237)', borderRadius:0}}
+                  onPress={() => this.props.navigation.navigate('forum')}>
                     <FontAwesome5 name={"address-card"} brand style={{ fontSize: 20, color:'#0c420c'}} />
                     <Text style={{color:'#0c420c'}}>Forum</Text>
                 </Button>
