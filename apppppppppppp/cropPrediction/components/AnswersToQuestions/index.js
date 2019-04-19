@@ -73,6 +73,66 @@ const solution = {
     {answer:"Here is the full set of answers gonna get from DB",
     name:"Dr. Dragons E",
     id:5}
+  ]},
+  4:{ title:"What is This?",
+  description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", 
+  imageUrl:require('../../assets/images/advisory_vector.jpeg'),
+  comments:[
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons A",
+    id:1},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons B",
+    id:2},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons C",
+    id:3},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons D",
+    id:4},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons E",
+    id:5}
+  ]},
+  5:{ title:"What is This?",
+  description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", 
+  imageUrl:require('../../assets/images/advisory_vector.jpeg'),
+  comments:[
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons A",
+    id:1},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons B",
+    id:2},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons C",
+    id:3},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons D",
+    id:4},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons E",
+    id:5}
+  ]},
+  6:{ title:"What is This?",
+  description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", 
+  imageUrl:require('../../assets/images/advisory_vector.jpeg'),
+  comments:[
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons A",
+    id:1},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons B",
+    id:2},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons C",
+    id:3},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons D",
+    id:4},
+    {answer:"Here is the full set of answers gonna get from DB",
+    name:"Dr. Dragons E",
+    id:5}
   ]}
 }
 
@@ -80,7 +140,7 @@ export default class AnswersToQuestions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title:'',
+      title:props.navigation.getParam("card").title,
       imageUrl:'',
       description:'',
       id:'',
@@ -88,10 +148,10 @@ export default class AnswersToQuestions extends Component {
     };
   }
 
-  componentDidMount(){
+  componentWillMount(){
     let myData = this.props.navigation.getParam("card");
     
-    console.log(solution[myData.id].comments)
+    console.warn(myData)
 
     this.setState({
       title:myData.title,
@@ -105,7 +165,6 @@ export default class AnswersToQuestions extends Component {
   }
 
   render() {
-    
     return (
       <View>
 
@@ -131,7 +190,6 @@ export default class AnswersToQuestions extends Component {
             showsHorizontalScrollIndicator={false}
             renderItem={i => {
               const isSelected = true 
-
               return (
                 <View style={{flex:1,borderWidth:1,borderRadius:5, borderColor:'#dbdbdb',marginLeft:15,marginRight:15,marginBottom:10}}>
                   

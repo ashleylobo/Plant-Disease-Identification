@@ -29,23 +29,87 @@ import ForumQuery from './components/ForumQuery';
 
 const Mdn = createDrawerNavigator({
   cropSelectionPage:{screen:CropSelectionPage},
-
-  loginSignUp:{screen:LoginSignUp},
-
-  cropDetailPage:{screen:CropDetailPage},
-  homePage:{screen:HomePage},
-  loginSignUp:{screen:LoginSignUp},
-  forum:{screen:Forum},
-  infoAndSelectImage:{screen:InfoAndSelectImage},
-  resultOfPredictedDisease:{screen:ResultOfPredictedDisease},
-  yieldPrediction:{screen:YieldPrediction},
-  answersToQuestions:{screen:AnswersToQuestions},
-  forumQuery:{screen:ForumQuery}
 },
 {
   contentComponent: SideBar,
 },
-)
+);
+
+const page1 = createDrawerNavigator({
+  forumQuery:{screen:ForumQuery},
+},
+{
+  contentComponent: SideBar,
+},
+);
+
+const page2 = createDrawerNavigator({
+  loginSignUp:{screen:LoginSignUp},
+},
+{
+  contentComponent: SideBar,
+},
+);
+
+const page3 = createDrawerNavigator({
+  answersToQuestions:{screen:AnswersToQuestions},
+},
+{
+  contentComponent: SideBar,
+},
+);
+const page4 = createDrawerNavigator({
+  cropDetailPage:{screen:CropDetailPage},
+},
+{
+  contentComponent: SideBar,
+},
+);
+const page5 = createDrawerNavigator({
+  homePage:{screen:HomePage},
+},
+{
+  contentComponent: SideBar,
+},
+);
+const page6 = createDrawerNavigator({
+  loginSignUp:{screen:LoginSignUp},
+},
+{
+  contentComponent: SideBar,
+},
+);
+
+const page7 = createDrawerNavigator({
+  forum:{screen:Forum},
+},
+{
+  contentComponent: SideBar,
+},
+);
+const page8 = createDrawerNavigator({
+  infoAndSelectImage:{screen:InfoAndSelectImage},
+},
+{
+  contentComponent: SideBar,
+},
+);
+const page9 = createDrawerNavigator({
+  resultOfPredictedDisease:{screen:ResultOfPredictedDisease},
+},
+{
+  contentComponent: SideBar,
+},
+);
+
+const page10 = createDrawerNavigator({
+  yieldPrediction:{screen:YieldPrediction},
+},
+{
+  contentComponent: SideBar,
+},
+);
+
 
 //-----------------------Main App navigation ---------------------------------------
 
@@ -53,7 +117,16 @@ const Mdn = createDrawerNavigator({
 const AppNavigator = createStackNavigator({
   
    profile: Mdn,
-
+   profile1:page1,
+   profile2:page2,
+   profile3:page3,
+   profile4:page4,
+   profile5:page5,
+   profile6:page6,
+   profile7:page7,
+   profile8:page8,
+   profile9:page9,
+   profile10:page10,
   },
   {
   defaultNavigationOptions: ({navigation}) => {
