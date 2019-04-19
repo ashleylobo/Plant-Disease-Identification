@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, View, StyleSheet,Text,Button, Image,PermissionsAndroid} from 'react-native';
+import { Modal, View, StyleSheet,Text,Button, Image,PermissionsAndroid,Dimensions} from 'react-native';
 import ImagePicker from "react-native-image-picker";
 import {TFLiteImageRecognition} from 'react-native-tensorflow-lite';
 
@@ -35,9 +35,9 @@ export default class ResultOfPredictedDisease extends Component {
       })
  
       const resultObj = {
-                name: "Name: " + results[0].name,  
-                confidence: "Confidence: " + results[0].confidence, 
-                inference: "Inference: " + results[0].inference + "ms"
+                name: results[0].name,  
+                confidence: results[0].confidence*100, 
+                inference: results[0].inference + "ms"
             };
       console.log(resultObj)      
       this.setState(resultObj)
@@ -79,6 +79,7 @@ export default class ResultOfPredictedDisease extends Component {
     return (
       <View>
         <View style={{marginTop: 22}}>
+
           <Modal
             animationType="slide"
             transparent={false}
@@ -89,15 +90,28 @@ export default class ResultOfPredictedDisease extends Component {
             <View style={{marginTop: 22}}>
               <View>
 
-              <Text style={styles.results}>
-                {this.state.name}
-              </Text>
-              <Text style={styles.results}>
-                {this.state.confidence}
-              </Text>
-              <Text style={styles.results}>
-                {this.state.inference}
-              </Text>
+                <View style={{justifyContent:'center'}}>
+                  <View style={{alignSelf:'center', borderRadius:5 ,width:Dimensions.get('window').width-150 , borderWidth:1 , color:'#dbdbdb',margin:10}}>
+                    <Text style={{fontSize:25 , textAlign:'center'}}>Disease</Text>
+                    <Text style={{fontSize:15 , textAlign:'center', margin:5}}>
+                      {this.state.name}
+                    </Text>
+                  </View>
+
+                  <View style={{alignSelf:'center',borderRadius:5 ,width:Dimensions.get('window').width-150, borderWidth:1 , color:'#dbdbdb',margin:10}}>
+                    <Text style={{fontSize:25 , textAlign:'center'}}>Accuracy</Text>
+                    <Text style={{fontSize:15 , textAlign:'center', margin:5}}>
+                    {this.state.confidence}
+                    </Text>
+                  </View>
+
+                  <View style={{alignSelf:'center',borderRadius:5 ,width:Dimensions.get('window').width-150, borderWidth:1 , color:'#dbdbdb',margin:10}}>
+                    <Text style={{fontSize:25 , textAlign:'center'}}>Time Inference</Text>
+                    <Text style={{fontSize:15 , textAlign:'center', margin:5}}>
+                      {this.state.inference}
+                    </Text>
+                  </View>    
+                </View>
 
                 <Button title="Close" onPress={() => {
                     this.setModalVisible(!this.state.predicted);
@@ -107,9 +121,12 @@ export default class ResultOfPredictedDisease extends Component {
               </View>
             </View>
           </Modal>
+
         </View>
                   <Text>Crop of group {group}</Text>
+        
         <Button title="Take Photo" onPress={this.getPhotos} />
+        
         {
            this.state.uri != false &&
            <Image style={{ alignContent : 'center' , width: 400, height: 400 }}
