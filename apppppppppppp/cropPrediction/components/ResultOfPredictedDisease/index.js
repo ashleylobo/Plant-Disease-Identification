@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import { Modal, View, StyleSheet,Text,Button, Image,PermissionsAndroid,Dimensions} from 'react-native';
+import { Button as nButton , Text as nText } from 'native-base'
 import ImagePicker from "react-native-image-picker";
 import {TFLiteImageRecognition} from 'react-native-tensorflow-lite';
 import Dialog, { DialogContent,DialogTitle } from 'react-native-popup-dialog';
 import Instructions from '../Instructions'
+import models from '../../constants/models';
+import RemedyPage from '../Remedy';
+
+
 export default class ResultOfPredictedDisease extends Component {
   constructor(props) {
     super(props);
@@ -12,14 +17,19 @@ export default class ResultOfPredictedDisease extends Component {
       uri : false,
       resultObj : {},
       predicted : false,
-      visible:true
+      visible:true,
+      showRemedy : false
     };
 
     try {
       // Initialize Tensorflow Lite Image Recognizer
+
+      const {navigation} = this.props
+      group = parseInt( navigation.getParam('group',1) )
+
       this.classifier = new TFLiteImageRecognition({
-        model: 'cropfive.tflite',  // Your tflite model in assets folder.
-        labels: 'label.txt' // Your label file
+        model: `${models[group - 1]}.tflite`,  // Your tflite model in assets folder.
+        labels: `${models[group - 1]}.txt` // Your label file
       })
  
     } catch(err) {
@@ -27,6 +37,8 @@ export default class ResultOfPredictedDisease extends Component {
     }
 
   }
+
+  
 
   async classifyImage(imagePath) {
     try {
@@ -86,6 +98,7 @@ export default class ResultOfPredictedDisease extends Component {
       height="75%"
     onTouchOutside={() => {
       this.setState({ visible: false });
+      this.getPhotos();
     }}
     style={{flex:1,flexWrap:'wrap'}}
   >
@@ -120,18 +133,26 @@ export default class ResultOfPredictedDisease extends Component {
                     </Text>
                   </View>
 
-                  <View style={{alignSelf:'center',borderRadius:5 ,width:Dimensions.get('window').width-150, borderWidth:1 , color:'#dbdbdb',margin:10}}>
-                    <Text style={{fontSize:25 , textAlign:'center'}}>Time Inference</Text>
-                    <Text style={{fontSize:15 , textAlign:'center', margin:5}}>
-                      {this.state.inference}
-                    </Text>
-                  </View>    
-                </View>
+                  {
+                    this.state.showRemedy &&
+                    <RemedyPage name={ this.state.name} />
+                  }
 
-                <Button title="Close" onPress={() => {
+
+                </View>
+           
+
+                <Button style={{ paddingTop : 10 }} title="Close" onPress={() => {
                     this.setModalVisible(!this.state.predicted);
                   }}
                 />
+                <Button title="Show Tips/Remedy" onPress={() => {
+                    this.setState( { showRemedy : true } );
+                  }}
+                />
+                <Button title="Go to Forum" 
+                onPress={()=>this.props.navigation.navigate("forum")}
+                />                
 
               </View>
             </View>
@@ -171,4 +192,9 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  buttonStyle : {
+    marginTop: 10,
+    paddingTop : 10,
+    width : 50
+  }
 });
