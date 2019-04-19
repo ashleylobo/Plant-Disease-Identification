@@ -31,7 +31,7 @@ export default class Toggle extends Component {
             <View style={{flex:1,flexDirection:'row',justifyContent:'space-between'}}>
          <Text style={title} >{this.state.title}                      
 </Text>
-<Icon onPress={this.toggleButton} name={this.state.iconState} style={{fontSize:20,   fontWeight:'bold',color:"#4fd140",marginRight:10
+<Icon onPress={()=>this.toggleButton()} name={this.state.iconState} style={{fontSize:20,   fontWeight:'bold',color:"#4fd140",marginRight:10
 }} />
 </View>
         <Text numberOfLines={this.state.numberOfLines} ellipsizeMode="tail" onPress={()=>{
