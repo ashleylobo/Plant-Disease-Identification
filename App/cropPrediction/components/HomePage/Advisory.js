@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text , ScrollView , Image,TouchableOpacity,FlatList } from 'react-native';
-import { Container, Content, Footer, FooterTab, Button, Icon } from 'native-base';
+import {  Button } from 'native-base';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 export default class Advisory extends Component {
@@ -40,17 +40,11 @@ export default class Advisory extends Component {
                       
                         <View style={{flex:0.58 ,backgroundColor:'rgba(255,255,255,0)' }}>
                           <Text style={{paddingLeft:7,fontSize:18 ,marginBottom:10,color:'#0c420c'}}>{i.item.description}</Text>
-                          {/* <Text style={{alignSelf:'center',textAlign:'center',backgroundColor:'rgb(216, 255, 216)' , borderWidth:1 , borderRadius:5 ,color:'#0c420c',width:95,height:40}} >{i.item.type}</Text>
-                         */}
+
                           <Button style={{alignSelf:'center',justifyContent:'center',backgroundColor:'#0c420c' , borderRadius:5 ,color:'white',width:155,height:30}}>
                             <Text style={{fontSize:18 , fontWeight:'bold',color:'white'}}>{i.item.type}</Text>
                           </Button>
-{/* 
-                            <Button style={{alignSelf:'center',justifyContent:'center',backgroundColor:'#0c420c' , borderRadius:5 ,color:'rgb(237, 255, 237)',width:155,height:30}}>
-                            <Text style={{fontSize:18 , fontWeight:'bold' }}>{i.item.type}</Text>
-                          </Button> */}
-                        
-                        
+
                         </View>
 
                         <View style={{flex:0.42,justifyContent:'center'}}>

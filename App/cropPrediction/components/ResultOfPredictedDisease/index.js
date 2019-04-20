@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Modal, View, ScrollView,StyleSheet,Text,Button, Image,PermissionsAndroid,Dimensions} from 'react-native';
+import { Modal, View, ScrollView,StyleSheet,Text,Image,PermissionsAndroid,Dimensions} from 'react-native';
 // import { Button as nButton , Text as nText } from 'native-base'
+import {Button} from 'native-base';
 import ImagePicker from "react-native-image-picker";
 import {TFLiteImageRecognition} from 'react-native-tensorflow-lite';
 import Dialog, { DialogContent,DialogTitle } from 'react-native-popup-dialog';
@@ -176,40 +177,74 @@ export default class ResultOfPredictedDisease extends Component {
 
                 </View>
            
+                <Button style={{marginBottom:15, alignSelf:'center',justifyContent:'center',backgroundColor:'#0c420c' , borderRadius:5 ,color:'white',width:Dimensions.get('window').width-200 ,height:55}}
+                    onPress={() => {this.setModalVisible(!this.state.predicted);}}>
+                  <Text style={{fontSize:18 , fontWeight:'bold',color:'white'}}>Close</Text>
+                </Button>
 
-                <Button style={{ paddingTop : 10 }} title="Close" onPress={() => {
+                {/* <Button style={{ paddingTop : 10 }} title="Close" onPress={() => {
                     this.setModalVisible(!this.state.predicted);
                   }}
-                />
-                <Button title="Show Tips/Remedy" onPress={() => {
+                /> */}
+
+                <Button style={{marginBottom:15,alignSelf:'center',justifyContent:'center',backgroundColor:'#0c420c' , borderRadius:5 ,color:'white',width:Dimensions.get('window').width-200,height:55}}
+                    onPress={() => { this.setState( { showRemedy : true } )}}>
+                  <Text style={{fontSize:18 , fontWeight:'bold',color:'white'}}>Show Tips/Remedy</Text>
+                </Button>
+                
+                {/* <Button title="Show Tips/Remedy" onPress={() => {
                     this.setState( { showRemedy : true } );
                   }}
-                />
-                <Button title="Go to Forum" 
+                /> */}
+
+                <Button style={{marginBottom:15,alignSelf:'center',justifyContent:'center',backgroundColor:'#0c420c' , borderRadius:5 ,color:'white',width:Dimensions.get('window').width-200,height:55}}
+                    onPress={() => {this.setModalVisible(!this.state.predicted);this.props.navigation.navigate("forum")}}>
+                  <Text style={{fontSize:18 , fontWeight:'bold',color:'white'}}>Go to Forum</Text>
+                </Button>
+
+                {/* <Button title="Go to Forum" 
                 onPress={()=>{
                   this.setModalVisible(!this.state.predicted)
                   this.props.navigation.navigate("forum")
                 }}
-                />                
+                />                 */}
 
-            <Button title="Call Helpline" onPress={this.handleCall}
-            />
+                <Button style={{marginBottom:15,alignSelf:'center',justifyContent:'center',backgroundColor:'#0c420c' , borderRadius:5 ,color:'white',width:Dimensions.get('window').width-200,height:55}}
+                    onPress={this.handleCall}>
+                  <Text style={{fontSize:18 , fontWeight:'bold',color:'white'}}>Call Helpline</Text>
+                </Button>
+
+
+              {/* <Button title="Call Helpline" onPress={this.handleCall}
+              /> */}
 
               </View>
             </ ScrollView>
           </Modal>
 
         </View>
+
+        <Button style={{marginBottom:5,alignSelf:'center',justifyContent:'center',backgroundColor:'#0c420c' , borderRadius:5 ,color:'white',width:Dimensions.get('window').width-100,height:55}}
+            onPress={this.getPhotos}>
+          <Text style={{fontSize:18 , fontWeight:'bold',color:'white'}}>Take Photo</Text>
+        </Button>
         
-        <Button title="Take Photo" onPress={this.getPhotos} />
+        
+        {/* <Button title="Take Photo" onPress={this.getPhotos} /> */}
         
         {
            this.state.uri != false &&
-           <Image style={{ alignContent : 'center' , width: 400, height: 400 }}
+           <Image style={{margin:10, alignContent : 'center' , width: 400, height: 400 }}
                   source={{ uri : this.state.uri }}
            />
         }
-        <Button title="Result Of Predicted Disease" onPress={() => this.checkIfLeaf(this.state.path)}></Button>
+
+        <Button style={{alignSelf:'center',justifyContent:'center',backgroundColor:'#0c420c' , borderRadius:5 ,color:'white',width:Dimensions.get('window').width-100,height:55}}
+            onPress={() => this.checkIfLeaf(this.state.path)}>
+          <Text style={{fontSize:18 , fontWeight:'bold',color:'white'}}>Result Of Predicted Disease</Text>
+        </Button>
+        
+        {/* <Button title="Result Of Predicted Disease" onPress={() => this.checkIfLeaf(this.state.path)}></Button> */}
       </View>
     );
   }
