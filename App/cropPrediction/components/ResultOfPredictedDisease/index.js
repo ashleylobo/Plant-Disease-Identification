@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, View, StyleSheet,Text,Button, Image,PermissionsAndroid,Dimensions} from 'react-native';
+import { Modal, View, ScrollView,StyleSheet,Text,Button, Image,PermissionsAndroid,Dimensions} from 'react-native';
 // import { Button as nButton , Text as nText } from 'native-base'
 import ImagePicker from "react-native-image-picker";
 import {TFLiteImageRecognition} from 'react-native-tensorflow-lite';
@@ -7,9 +7,13 @@ import Dialog, { DialogContent,DialogTitle } from 'react-native-popup-dialog';
 import Instructions from '../Instructions'
 import models from '../../constants/models';
 import RemedyPage from '../Remedy';
+import call from 'react-native-phone-call'
 
+const contact = {
+  number: '18001801551', // String value with the number to call
+  prompt: true // Optional boolean property. Determines if the user should be prompt prior to the call 
+}
 
-import { Root } from 'native-base';
 export default class ResultOfPredictedDisease extends Component {
   constructor(props) {
     super(props);
@@ -22,21 +26,6 @@ export default class ResultOfPredictedDisease extends Component {
       showRemedy : false
     };
 
-    // try {
-    //   // Initialize Tensorflow Lite Image Recognizer
-
-    //   const {navigation} = this.props
-    //   group = parseInt( navigation.getParam('group',1) )
-
-
-    //   this.classifier = new TFLiteImageRecognition({
-    //     model: `${models[group - 1]}.tflite`,  // Your tflite model in assets folder.
-    //     labels: `${models[group - 1]}.txt` // Your label file
-    //   })      
- 
-    // } catch(err) {
-    //   alert(err)
-    // }
 
   }
 
@@ -101,6 +90,10 @@ export default class ResultOfPredictedDisease extends Component {
     }   
   }
 
+  handleCall = ()=>{
+    call(contact).catch(console.error)
+  }  
+
   async componentDidMount() {
     console.log("mounting hello");
     const granted = await PermissionsAndroid.request(
@@ -164,7 +157,7 @@ export default class ResultOfPredictedDisease extends Component {
               onRequestClose={() => {
                 Alert.alert('Modal has been closed.');
               }}>
-              <View style={{marginTop: 22}}>
+              <ScrollView style={{marginTop: 22}}>
                 <View>
 
             <View style={{justifyContent:'center'}}>
@@ -193,16 +186,17 @@ export default class ResultOfPredictedDisease extends Component {
                   }}
                 />
                 <Button title="Go to Forum" 
-                onPress={()=>this.props.navigation.navigate("forum")}
+                onPress={()=>{
+                  this.setModalVisible(!this.state.predicted)
+                  this.props.navigation.navigate("forum")
+                }}
                 />                
 
-            <Button title="Close" onPress={() => {
-                this.setModalVisible(!this.state.predicted);
-              }}
+            <Button title="Call Helpline" onPress={this.handleCall}
             />
 
               </View>
-            </View>
+            </ ScrollView>
           </Modal>
 
         </View>
