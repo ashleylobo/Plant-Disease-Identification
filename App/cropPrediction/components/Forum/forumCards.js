@@ -24,7 +24,7 @@ export default class ForumCards extends Component {
 
         <Card
             title={this.props.titleName}
-            image={this.props.imageUrl}>
+            image={{ uri : this.props.imageUrl }}>
             <Text style={{marginBottom: 10}}>
             { this.props.description }
             </Text>

@@ -3,138 +3,7 @@ import { View, Text, StyleSheet,FlatList,Image,TouchableOpacity,ScrollView,Dimen
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import {Fab} from 'native-base';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-
-// const data = [
-//   {id:1,title:"What is This?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", imageUrl:"https://i.imgur.com/v2HxvF3.jpg"},
-//   {id:2,title:"Tomato Problem" , description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries." ,imageUrl:"https://i.imgur.com/aOGCxz5.jpg"},
-//   {id:3,title:"Corn leaf Pink?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", mageUrl:"https://i.imgur.com/v2HxvF3.jpg"},
-//   {id:4,title:"Tomato Leaf turning pale yellow?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.",  imageUrl:"https://i.imgur.com/aOGCxz5.jpg"},
-//   {id:5,title:"Help needed Tomato?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.",mageUrl:"https://i.imgur.com/v2HxvF3.jpg"},
-//   {id:6,title:"Cherry plant spots",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.",  imageUrl:"https://i.imgur.com/aOGCxz5.jpg"},
-// ];
-
-const solution = {
-  1:{ title:"What is This?",
-  description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", 
-  imageUrl:require('../../assets/images/advisory_vector.jpeg'),
-  comments:[
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons A",
-    id:1},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons B",
-    id:2},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons C",
-    id:3},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons D",
-    id:4},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons E",
-    id:5}
-  ]},
-  2:{ title:"What is This?",
-  description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", 
-  imageUrl:require('../../assets/images/advisory_vector.jpeg'),
-  comments:[
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons A",
-    id:1},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons B",
-    id:2},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons C",
-    id:3},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons D",
-    id:4},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons E",
-    id:5}
-  ]},
-  3:{ title:"What is This?",
-  description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", 
-  imageUrl:require('../../assets/images/advisory_vector.jpeg'),
-  comments:[
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons A",
-    id:1},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons B",
-    id:2},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons C",
-    id:3},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons D",
-    id:4},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons E",
-    id:5}
-  ]},
-  4:{ title:"What is This?",
-  description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", 
-  imageUrl:require('../../assets/images/advisory_vector.jpeg'),
-  comments:[
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons A",
-    id:1},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons B",
-    id:2},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons C",
-    id:3},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons D",
-    id:4},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons E",
-    id:5}
-  ]},
-  5:{ title:"What is This?",
-  description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", 
-  imageUrl:require('../../assets/images/advisory_vector.jpeg'),
-  comments:[
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons A",
-    id:1},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons B",
-    id:2},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons C",
-    id:3},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons D",
-    id:4},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons E",
-    id:5}
-  ]},
-  6:{ title:"What is This?",
-  description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", 
-  imageUrl:require('../../assets/images/advisory_vector.jpeg'),
-  comments:[
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons A",
-    id:1},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons B",
-    id:2},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons C",
-    id:3},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons D",
-    id:4},
-    {answer:"Here is the full set of answers gonna get from DB",
-    name:"Dr. Dragons E",
-    id:5}
-  ]}
-}
+import axios from 'axios';
 
 export default class AnswersToQuestions extends Component {
   constructor(props) {
@@ -144,23 +13,47 @@ export default class AnswersToQuestions extends Component {
       imageUrl:'',
       description:'',
       id:'',
-      comments:''
+      comments:'',
+      commentsArray : []
     };
   }
 
   componentWillMount(){
     let myData = this.props.navigation.getParam("card");
     
-    console.warn(myData)
+    var coms = []
+    axios.get(`https://plantdiseasecomps2020.herokuapp.com/listans?quno=2`)
+          .then( res =>{
+            console.log("called api")
+            var data = res.data['list1'];
+            
+            data.forEach(ele => {
 
-    this.setState({
-      title:myData.title,
-      imageUrl:myData.imageUrl,
-      description:myData.description,
-      id:myData.id,
-      comments:solution[myData.id].comments
-      
-    })
+              var query = {
+                id : ele.ansno,
+                answer : ele.answer,
+                upvotes : ele.upvotes,
+                downvotes : ele.downvotes,
+                name : ele.usera,
+                type : ele.type
+              }
+              coms.push( query );
+
+            });
+
+
+            this.setState({
+              title:myData.title,
+              imageUrl:myData.imageUrl,
+              description:myData.description,
+              id:myData.id,
+              comments: coms
+              
+            })
+
+          }).catch(err => console.log(err , " error"))
+
+
 
   }
 
@@ -172,7 +65,7 @@ export default class AnswersToQuestions extends Component {
 
         <View style={{borderWidth:1 , borderRadius:5,borderColor:'#dbdbdb',margin:10 , marginBottom:5}}>
           <Text style={{textAlign:'center' ,fontSize:24 , color:'#0c420c'}}>Title : {this.state.title}</Text>
-          <Image style={{alignSelf:"center",paddingRight:7, width:Dimensions.get('window').width-50 , height:200, margin:7}} source={this.state.imageUrl} ></Image>
+          <Image style={{alignSelf:"center",paddingRight:7, width:Dimensions.get('window').width-50 , height:200, margin:7}} source={{ uri : this.state.imageUrl }} ></Image>
         </View>
         
         <View style={{flexDirection:'row'}}>

@@ -4,24 +4,55 @@ import { Card, ListItem, Icon } from 'react-native-elements'
 import { Container,Fab, Content, Footer, FooterTab, Button} from 'native-base';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import  ForumCards  from './forumCards'
+import axios from 'axios';
 
 //onPress={() => this.props.naviagtion.navigate('answersToQuestions',{card:{titleName:item.title,imageUrl:item.imageUrl,description:item.description}})}
 
-const data = [
-  {id:1,title:"What is This?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", imageUrl:require('../../assets/base_plants/corn.jpg')},
-  {id:2,title:"Tomato Problem" , description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries." ,imageUrl:require('../../assets/base_plants/apple.jpg')},
-  {id:3,title:"Corn leaf Pink?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", imageUrl:require('../../assets/base_plants/grape.jpg')},
-  {id:4,title:"Tomato Leaf turning pale yellow?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.",  imageUrl:require('../../assets/base_plants/corn.jpg')},
-  {id:5,title:"Help needed Tomato?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.",imageUrl:require('../../assets/base_plants/apple.jpg')},
-  {id:6,title:"Cherry plant spots",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.",  imageUrl:require('../../assets/base_plants/grape.jpg')},
-];
+// const data = [
+//   {id:1,title:"What is This?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", imageUrl:require('../../assets/base_plants/corn.jpg')},
+//   {id:2,title:"Tomato Problem" , description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries." ,imageUrl:require('../../assets/base_plants/apple.jpg')},
+//   {id:3,title:"Corn leaf Pink?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.", imageUrl:require('../../assets/base_plants/grape.jpg')},
+//   {id:4,title:"Tomato Leaf turning pale yellow?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.",  imageUrl:require('../../assets/base_plants/corn.jpg')},
+//   {id:5,title:"Help needed Tomato?",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.",imageUrl:require('../../assets/base_plants/apple.jpg')},
+//   {id:6,title:"Cherry plant spots",description:"Corn is a starchy vegetable and cereal grain that has been eaten all over the world for centuries.",  imageUrl:require('../../assets/base_plants/grape.jpg')},
+// ];
 
 
 export default class Forum extends Component {
   constructor(props) {
+    console.log("hello shit")
     super(props);
     this.state = {
+      data : []
     };
+  }
+
+  async componentDidMount(){
+
+    var qdata = []
+    console.log("comunting")
+    await axios.get('https://plantdiseasecomps2020.herokuapp.com/allqts').then( res => {
+
+      let data = res.data;
+      console.log(" getting data" ,  data[0])
+      data.forEach(ele => {
+        
+        let query = {
+          id : ele.qno,
+          title : ele.questions,
+          description : "",
+          type : ele.type,
+          imageUrl : ele.image_path
+        }
+        console.log(query)
+        if ( ele.questions !== null )
+          qdata.push( query );
+
+      });
+      
+    })
+
+    this.setState({data:qdata})
   }
 
   render() {
@@ -33,7 +64,7 @@ export default class Forum extends Component {
       <View>
         <FlatList
           numColumns={1}
-          data={data}
+          data={this.state.data}
           keyExtractor={item => item.id.toString()}
           renderItem={({ item }) => (
               <View>
