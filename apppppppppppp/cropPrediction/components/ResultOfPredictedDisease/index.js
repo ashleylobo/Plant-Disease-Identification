@@ -184,16 +184,21 @@ export default class ResultOfPredictedDisease extends Component {
                 </View>
            
 
-                <Button style={{ paddingTop : 10 }} title="Close" onPress={() => {
-                    this.setModalVisible(!this.state.predicted);
+                <Button style={{ paddingTop : 10 }} title="Close"
+                  style={{margin:10,alignSelf:'center',justifyContent:'center',backgroundColor:'#0c420c' , borderRadius:5 ,color:'white',width:155,height:30}}
+                    onPress={() => {
+                      this.setModalVisible(!this.state.predicted);
                   }}
                 />
-                <Button title="Show Tips/Remedy" onPress={() => {
+                <Button title="Show Tips/Remedy" 
+                  style={{margin:10,alignSelf:'center',justifyContent:'center',backgroundColor:'#0c420c' , borderRadius:5 ,color:'white',width:155,height:30}}
+                   onPress={() => {
                     this.setState( { showRemedy : true } );
                   }}
                 />
-                <Button title="Go to Forum" 
-                onPress={()=>this.props.navigation.navigate("forum")}
+                <Button title="Go to Forum"
+                  style={{margin:10,alignSelf:'center',justifyContent:'center',backgroundColor:'#0c420c' , borderRadius:5 ,color:'white',width:155,height:30}}
+                    onPress={()=>this.props.navigation.navigate("forum")}
                 />                
 
             <Button title="Close" onPress={() => {
