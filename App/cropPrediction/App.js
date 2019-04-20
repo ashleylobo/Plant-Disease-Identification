@@ -25,6 +25,7 @@ import CropDetailPage from './components/CropDetailPage';
 import AnswersToQuestions from './components/AnswersToQuestions';
 import ForumQuery from './components/ForumQuery';
 import Instruction from'./components/Instructions';
+import QuestionForm from './components/QuestionForm';
 
 //-----------------------Drawer navigation Bar ---------------------------------------
 
@@ -118,6 +119,13 @@ const page11 = createDrawerNavigator({
 },
 );
 
+const page12 = createDrawerNavigator({
+  questionForm:{screen: QuestionForm},
+},
+{
+  contentComponent: SideBar,
+},
+);
 
 
 //-----------------------Main App navigation ---------------------------------------
@@ -136,8 +144,8 @@ const AppNavigator = createStackNavigator({
    profile8:page8,
    profile9:page9,
    profile10:page10,
-
    profile11:page11,
+   profile12:page12
   },
   {
   defaultNavigationOptions: ({navigation}) => {

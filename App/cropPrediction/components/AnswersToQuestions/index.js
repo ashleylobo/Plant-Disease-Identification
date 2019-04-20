@@ -22,7 +22,7 @@ export default class AnswersToQuestions extends Component {
     let myData = this.props.navigation.getParam("card");
     
     var coms = []
-    axios.get(`https://plantdiseasecomps2020.herokuapp.com/listans?quno=2`)
+    axios.get(`https://plantdiseasecomps2020.herokuapp.com/listans?quno=${myData.id}`)
           .then( res =>{
             console.log("called api")
             var data = res.data['list1'];

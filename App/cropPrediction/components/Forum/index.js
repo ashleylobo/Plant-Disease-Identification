@@ -101,7 +101,8 @@ export default class Forum extends Component {
         active={this.state.active}
         containerStyle={{ }}
         style={{ backgroundColor: 'white' , marginBottom:45}}
-        position="bottomRight">
+        position="bottomRight"
+        onPress={ () => this.props.navigation.navigate('questionForm') }>
         <FontAwesome5 name={"chalkboard-teacher"} brand style={{ fontSize: 20, color:'#0c420c'}} />
       </Fab>
 
