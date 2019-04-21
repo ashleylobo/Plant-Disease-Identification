@@ -1,7 +1,7 @@
 import Images from '../assets/images'
 export default plants = [
     {
-      name: "apple",
+      name: "Apple",
       image:Images.apple,
       planting: "A VERY LONG DEscription",
       care:"dfd",
@@ -10,7 +10,7 @@ export default plants = [
       group:3
     },
     {
-      name: "grapes",
+      name: "Grapes",
       image:Images.grape,
       planting: "A VERY LONG alright",
       care:"something..",
@@ -19,7 +19,7 @@ export default plants = [
       group:4
     },
     {
-      name: "peach",
+      name: "Peach",
       image:Images.peach,
       planting: "A VERY LONG DEscription",
       care:"something..",
@@ -28,7 +28,7 @@ export default plants = [
       group:2
     },
     {
-      name: "potato",
+      name: "Potato",
       image:Images.potato,
       planting: "Potatoes can be started 0 to 2 weeks after last spring frost. You may plant earlier, as soon as soil can be worked, but be aware that some crops may be ruined by a frost or wet soil. Find your local frost dates here. However, if have a “late” spring, it’s not too late to plant potatoes through April (depending on where you’re located).  Some folks even plant through June, especially in containers or potato towers.",
       care:"Do not allow sunlight to fall on the tubers, which develop under the surface of the soil, or they will turn green.Do the hilling in the morning, when plants are at their tallest. During the heat of the day, plants start drooping.Maintain even moisture, especially from the time when sprouts appear until several weeks after they blossom. The plants need 1 to 2 inches of water per week. If you water too much right after planting and not enough as the potatoes begin to form, the tubers can become misshapen.The last hilling should be done before the potato plants bloom, when the plant is about 6 inches tall. Hoe the dirt up around the base of the plant in order to cover the tubers as well as to support the plant.Hilling keeps the potatoes from getting sunburned, which can cause them to turn green and produce a chemical called solanine. Solanine gives off a bitter taste and is toxic.",pest_diseases:"sdsp",harves:"sad",
@@ -37,7 +37,7 @@ export default plants = [
     ,
   group:1},
     {
-      name: "tomato",
+      name: "Tomato",
       image:Images.tomato,
       planting: "If you’re starting tomatoes from seed (versus transplants), you’ll want to start your seeds indoors 6 to 8 weeks before the average last spring frost date. See our Planting Calendar for seed-starting dates specific to your area and our article on “Tomatoes From Seed the Easy Way” for more tips.\n Transplant seedlings after the last spring frost when the soil has warmed. See our Planting Calendar for suggested transplanting dates.\n SELECTING AND PREPARING A PLANTING SITE\n Select a site with full sun and well-drained soil. For northern regions, it is VERY important that your site receives at least 6 hours of daily sunlight. For southern regions, light afternoon shade will help tomatoes survive and thrive.\n Two weeks before transplanting tomato plants outdoors, dig soil to about 1 foot deep and mix in aged manure or compost. Learn more about preparing soil for planting.\n Some sort of support system is recommended, but sprawling plants can also produce fine crops if you have the space and if the weather cooperates. \n HOW TO PLANT TOMATOES\n Harden off seedlings or transplants for a week before planting in the garden. Set young plants outdoors in the shade for a couple of hours the first day, gradually increasing the amount of time the plants are outside each day to include some direct sunlight. Learn more about hardening off seedlings.\n Plant transplants about 2 feet apart.\n Place tomato stakes or cages in the soil at the time of planting to avoid damaging roots later on. Staking keeps developing tomato fruit off the ground, while caging lets the plant hold itself upright. Learn how to build stakes and other tomato supports.\n Pinch off a few of the lower branches on transplants, and plant the root ball deep enough so that the remaining lowest leaves are just above the surface of the soil.\n If your transplants are leggy, you can remedy this by burying up to ⅔ of the plant, including the lower sets of leaves. Tomato stems have the ability to grow roots from the buried stems.\n Water well to reduce shock to the roots.\n GROWING TOMATOES IN CONTAINERS\n Use a large pot or container with drainage holes in the bottom.\n Use loose, well-draining soil. We recommend a good potting mix with added organic matter.\n Plant one tomato plant per pot. Choose from bush or dwarf varieties; many cherry tomatoes grow well in pots. \n Taller varieties may need to be staked.\n Place the pot in a sunny spot with 6 to 8 hours of full sun a day.\n Keep soil moist. Containers will dry out more quickly than the garden soil, so check daily and provide extra water during a heat wave",
       care:"Water generously the first few days.\n Water well throughout the growing season, about 2 inches per week during the summer. Water deeply for a strong root system.\n Water in the early morning. This gives plant the moisture it needs to make it through a hot day. Avoid watering late afternoon or evening. \n Mulch five weeks after transplanting to retain moisture and to control weeds. Mulch also keeps soil from splashing the lower tomato leaves. \n To help tomatoes through periods of drought, find some flat rocks and place one next to each plant. The rocks prevent water from evaporating from the soil.\n Side dress plants with fertilizer or compost every two weeks starting when the tomato fruits are about 1 inch in diameter.\n If using stakes, prune plants by pinching off suckers (side stems) so that only a couple of branches are growing from each plant. The suckers grow between the branch and the main stem.",
@@ -46,7 +46,7 @@ export default plants = [
   ,   group:2
     },
     {
-      name: "corn",
+      name: "Corn",
       image:Images.corn,
       planting: "A VERY LONG alright",
       care:"something..",
@@ -56,7 +56,7 @@ export default plants = [
   
     },
     {
-      name: "strawberry",
+      name: "Strawberry",
       image:Images.strawberry,
       planting: "A VERY LONG DEscription",
       care:"something..",
@@ -65,7 +65,7 @@ export default plants = [
       group:1
     },
     {
-      name: "pepper",
+      name: "Pepper",
       image:Images.apple,
       planting: "A VERY LONG alright",
       care:"something..",
@@ -74,7 +74,7 @@ export default plants = [
       group:4
     },
     {
-      name: "melon",
+      name: "Melon",
       image:Images.apple,
       planting: "A VERY LONG description alright",
       care:"something..",
@@ -83,7 +83,7 @@ export default plants = [
       
     },
     {
-    name: "onion",
+    name: "Onion",
     image:Images.potato,
     planting: "A VERY LONG alright",
     care:"something..",
@@ -92,7 +92,7 @@ export default plants = [
     group:1
   },
   {
-    name: "orange",
+    name: "Orange",
     image:Images.peach,
     planting: "A VERY LONG DEscription",
     care:"something..",
@@ -101,7 +101,7 @@ export default plants = [
     group:2
   },
   {
-    name: "mango",
+    name: "Mango",
     image:Images.peach,
     planting: "A VERY LONG DEscription",
     care:"something..",

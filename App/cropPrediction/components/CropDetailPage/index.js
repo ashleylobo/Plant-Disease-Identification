@@ -37,9 +37,12 @@ export default class CropDetailPage extends Component {
 
     }
    
- 
+    componentWillMount(){
+      console.log("will mount soon")
+    }
 
     componentDidMount(){
+      console.log(this.state, "details compostate")
       BackHandler.addEventListener('hardwareBackPress', this.f);
     }
     
