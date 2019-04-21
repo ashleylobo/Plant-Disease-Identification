@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View,Image, Text ,FlatList,TouchableOpacity,AsyncStorage} from 'react-native';
 import {Button} from 'native-base';
 import LoginSignUp from '../LoginSignUp';
+import { StackActions, NavigationActions } from 'react-navigation';
+
 // import strings from '../../constants/strings';
 
 const routes = [
@@ -107,7 +109,14 @@ export default class CropSelectionPage extends Component {
     await AsyncStorage.setItem('checkState', JSON.stringify(finaleList))
 
     console.log('imgDIct', imgDictList)
-    this.props.navigation.navigate('homePage',{imgs:{imgs:imgList,changeState:1}})
+    // this.props.navigation.navigate('homePage',{imgs:{imgs:imgList,changeState:1}})
+
+    const resetAction = StackActions.reset({
+      index: 0,
+      actions: [NavigationActions.navigate({ routeName: 'noPage'}, {imgs:{imgs:imgList,changeState:1}} )],
+    });
+    this.props.navigation.dispatch(resetAction);
+
   }
 
   _setEn = async () =>{
