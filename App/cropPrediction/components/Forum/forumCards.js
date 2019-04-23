@@ -1,18 +1,14 @@
 import React, { Component }from 'react';
 import { View, Text, StyleSheet,TouchableOpacity } from 'react-native';
-import { Card, ListItem, Icon } from 'react-native-elements'
-// import Share, {ShareShn} from 'react-native-share';
+import { Card, ListItem, Icon } from 'react-native-elements';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-// constructor(props){
-//   super(props)
-// }
 
 export default class ForumCards extends Component {
   constructor(props)  {
       super(props);
 
   }
-
 
 
   render() {
@@ -29,20 +25,23 @@ export default class ForumCards extends Component {
             { this.props.description }
             </Text>
             <View style = {styles.lineStyle} />
+            
             <View style={{flex: 1, flexDirection: 'row',justifyContent: 'space-between',paddingTop:20,paddingBottom:10}}>
 
-            <Icon
-            name='thumbs-up'
-            type='font-awesome'
-            color='gray' />
-            <Icon
-            name='thumbs-down'
-            type='font-awesome'
-            color='gray' />                
-            <Icon
-            name='share-alt'
-            type='font-awesome'
-            color='gray' />
+              <View style={{flexDirection:'row'}}>
+                <FontAwesome5 name={"thumbs-up"} brand style={{ paddingLeft:15,paddingTop:3,fontSize: 20, color:'#0c420c'}} />
+                <Text style={{paddingLeft:15,textColor:'#0c420c',fontSize:20}} >4</Text>
+              </View>
+              
+              <View style={{flexDirection:'row'}}>
+                <FontAwesome5 name={"thumbs-down"} brand style={{ paddingLeft:15,paddingTop:3,fontSize: 20, color:'#0c420c'}} />
+                <Text style={{paddingLeft:15,textColor:'#0c420c',fontSize:20}} >4</Text>
+              </View>
+
+              <View style={{flexDirection:'row'}}>
+                <FontAwesome5 name={"share-alt"} brand style={{ paddingLeft:15,paddingTop:3,fontSize: 20, color:'#0c420c'}} />
+                <Text style={{paddingLeft:15,paddingRight:15,textColor:'#0c420c',fontSize:20}} >4</Text>
+              </View>
 
             </View>
 

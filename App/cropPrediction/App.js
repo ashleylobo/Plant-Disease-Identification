@@ -168,10 +168,7 @@ const AppNavigator = createStackNavigator({
       headerTitleStyle: {
         fontWeight: "bold",
         fontSize:30,
-        paddingLeft:50,
         color: "white",
-        
-        alignSelf: 'center',
       },
       headerStyle: {
         borderBottomColor:"white",
@@ -179,7 +176,8 @@ const AppNavigator = createStackNavigator({
         backgroundColor: "#0c420c"
       }
     };
-  }
+  },      
+  headerLayoutPreset: 'center'
 });
 
 export default createAppContainer(AppNavigator);
