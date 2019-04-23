@@ -26,8 +26,10 @@ import AnswersToQuestions from './components/AnswersToQuestions';
 import ForumQuery from './components/ForumQuery';
 import Instruction from'./components/Instructions';
 import QuestionForm from './components/QuestionForm';
+import NoPage from './components/NoPage/NoPage';
 
 //-----------------------Drawer navigation Bar ---------------------------------------
+console.disableYellowBox = true;
 
 const Mdn = createDrawerNavigator({
   cropSelectionPage:{screen:CropSelectionPage},
@@ -127,25 +129,34 @@ const page12 = createDrawerNavigator({
 },
 );
 
+const page13 = createDrawerNavigator({
+  noPage:{screen: NoPage},
+},
+{
+  contentComponent: SideBar,
+},
+);
+
 
 //-----------------------Main App navigation ---------------------------------------
 
 
 const AppNavigator = createStackNavigator({
-  
-   profile: Mdn,
-   profile1:page1,
-   profile2:page2,
-   profile3:page3,
-   profile4:page4,
-   profile5:page5,
-   profile6:page6,
-   profile7:page7,
-   profile8:page8,
-   profile9:page9,
-   profile10:page10,
-   profile11:page11,
-   profile12:page12
+   
+  noPage : page13,  
+  profile: Mdn,
+  profile1:page1,
+  profile2:page2,
+  profile3:page3,
+  profile4:page4,
+  profile5:page5,
+  profile6:page6,
+  profile7:page7,
+  profile8:page8,
+  profile9:page9,
+  profile10:page10,
+  profile11:page11,
+  profile12:page12
   },
   {
   defaultNavigationOptions: ({navigation}) => {

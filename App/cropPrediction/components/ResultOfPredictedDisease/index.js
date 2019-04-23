@@ -123,6 +123,7 @@ export default class ResultOfPredictedDisease extends Component {
   render() {
     const {navigation}=this.props
     group=navigation.getParam('group',1)
+    console.log(group)
     return (
       <View>
           <Dialog

@@ -9,7 +9,7 @@ export default class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        imgs : [2,3,4],
+        imgs : [{ url: 27, title: 'Pepper' }],
         changeState : -1
     };
   }
@@ -24,7 +24,7 @@ export default class HomePage extends Component {
       this.setState({imgs:imgs.imgs , changeState:0})
     }
 
-    console.log(this.state.imgs)
+    console.log( "home page state" , this.state.imgs)
   }
 
   render() {
@@ -43,7 +43,7 @@ export default class HomePage extends Component {
               showsHorizontalScrollIndicator={false}
               renderItem={i => {
                   const isSelected = true 
-  
+                  console.log(i)
                   return (
                       <View style={{ flex:1 , margin:5}}>
                         <TouchableOpacity onPress={()=>{
