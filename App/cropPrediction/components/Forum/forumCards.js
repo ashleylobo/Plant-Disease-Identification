@@ -19,28 +19,29 @@ export default class ForumCards extends Component {
         >
 
         <Card
-            title={this.props.titleName}
+            // title={this.props.titleName}
             image={{ uri : this.props.imageUrl }}>
-            <Text style={{marginBottom: 10}}>
-            { this.props.description }
-            </Text>
-            <View style = {styles.lineStyle} />
             
-            <View style={{flex: 1, flexDirection: 'row',justifyContent: 'space-between',paddingTop:20,paddingBottom:10}}>
+            <Text style={{color:'black',fontSize:20}} >
+            { this.props.titleName.toUpperCase() }
+            </Text>
+            {/* <View style = {styles.lineStyle} /> */}
+            
+            <View style={{flex: 1, flexDirection: 'row',justifyContent: 'space-between',paddingTop:8,paddingBottom:5}}>
 
               <View style={{flexDirection:'row'}}>
                 <FontAwesome5 name={"thumbs-up"} brand style={{ paddingLeft:15,paddingTop:3,fontSize: 20, color:'#0c420c'}} />
-                <Text style={{paddingLeft:15,textColor:'#0c420c',fontSize:20}} >4</Text>
+                <Text style={{paddingLeft:15,color:'black',fontSize:20}} >4</Text>
               </View>
               
               <View style={{flexDirection:'row'}}>
                 <FontAwesome5 name={"thumbs-down"} brand style={{ paddingLeft:15,paddingTop:3,fontSize: 20, color:'#0c420c'}} />
-                <Text style={{paddingLeft:15,textColor:'#0c420c',fontSize:20}} >4</Text>
+                <Text style={{paddingLeft:15,color:'black',fontSize:20}} >4</Text>
               </View>
 
               <View style={{flexDirection:'row'}}>
-                <FontAwesome5 name={"share-alt"} brand style={{ paddingLeft:15,paddingTop:3,fontSize: 20, color:'#0c420c'}} />
-                <Text style={{paddingLeft:15,paddingRight:15,textColor:'#0c420c',fontSize:20}} >4</Text>
+                <FontAwesome5 name={"share-alt"} brand style={{ paddingLeft:15,paddingTop:3,fontSize: 20, color:'#0c420c',paddingRight:15,}} />
+                {/* <Text style={{paddingLeft:15,paddingRight:15,color:'black',fontSize:20}} >4</Text> */}
               </View>
 
             </View>
