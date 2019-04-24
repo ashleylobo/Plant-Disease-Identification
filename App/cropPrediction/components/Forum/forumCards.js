@@ -41,7 +41,7 @@ export default class ForumCards extends Component {
 
               <View style={{flexDirection:'row'}}>
                 <FontAwesome5 name={"share-alt"} brand style={{ paddingLeft:15,paddingTop:3,fontSize: 20, color:'#0c420c',paddingRight:15,}} />
-                {/* <Text style={{paddingLeft:15,paddingRight:15,color:'black',fontSize:20}} >4</Text> */}
+                <Text style={{paddingLeft:15,paddingRight:15,color:'black',fontSize:20}} >4</Text>
               </View>
 
             </View>

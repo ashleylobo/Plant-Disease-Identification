@@ -39,7 +39,9 @@ export default class AnswersToQuestions extends Component {
     comms.push(newDictComment)
 
     this.setState({
-      comments:comms
+      comments:comms,
+      inputComment:''
+
     })
 
   }
@@ -134,7 +136,7 @@ export default class AnswersToQuestions extends Component {
       <View >
         <View style={{flexDirection:'row'}}>
           <Item rounded style={{flex:0.98 , marginLeft:15,height:50,}}>
-            <Input placeholder=" Enter the comments here ...." onChangeText={text => this.setState({inputComment:text})}></Input>
+            <Input placeholder=" Enter the comments here ...." onChangeText={text => this.setState({inputComment:text})} value={this.state.inputComment}></Input>
           </Item>
   
           <View style={{height:50,width:50, marginLeft:10,backgroundColor:'#dbdbdb',borderRadius:30,justifyContent:'center'}}>
