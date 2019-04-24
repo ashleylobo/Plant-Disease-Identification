@@ -6,6 +6,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import  ForumCards  from './forumCards'
 import axios from 'axios';
 import BottomTab from '../BottomTab';
+import LoadScreen from '../LoadScreen';
+import backendip from '../../constants/backendip';
 
 //onPress={() => this.props.naviagtion.navigate('answersToQuestions',{card:{titleName:item.title,imageUrl:item.imageUrl,description:item.description}})}
 
@@ -24,7 +26,8 @@ export default class Forum extends Component {
     console.log("hello shit")
     super(props);
     this.state = {
-      data : []
+      data : [],
+      loaded : false
     };
   }
 
@@ -32,7 +35,7 @@ export default class Forum extends Component {
 
     var qdata = []
     console.log("comunting")
-    await axios.get('https://plantdiseasecomps2020.herokuapp.com/allqts').then( res => {
+    await axios.get(`${backendip}/allqts`).then( res => {
 
       let data = res.data;
       console.log(" getting data" ,  data[0])
@@ -53,7 +56,7 @@ export default class Forum extends Component {
       
     })
 
-    this.setState({data:qdata})
+    this.setState({data:qdata , loaded : true})
   }
 
   render() {
@@ -61,39 +64,24 @@ export default class Forum extends Component {
     return (
 
       <View style={{flex:1}}>
-        
-      <View>
-        <FlatList
-          numColumns={1}
-          data={this.state.data}
-          keyExtractor={item => item.id.toString()}
-          renderItem={({ item }) => (
-              <View>
-                <ForumCards navigation={this.props.navigation} fourmid={item.id} titleName={item.title}  imageUrl={item.imageUrl} description={item.description}  />
-              </View>
-        )}
-        />
-      </View>
 
- 
-        {/* <Footer style={{position:'absolute',bottom: 0}} >
-          <FooterTab >
-            <Button style={{backgroundColor:'rgb(237, 255, 237)', borderRadius:0}}
-              onPress={() => this.props.navigation.navigate('homePage')}>
-                <FontAwesome5 name={"home"} brand style={{ fontSize: 20, color:'#0c420c'}} />
-                <Text style={{color:'#0c420c'}}>HomePage</Text>
-            </Button>
-            <Button style={{backgroundColor:'rgb(216, 255, 216)', borderRadius:0}}
-              onPress={() => this.props.navigation.navigate('forum')}>
-                <FontAwesome5 name={"address-card"} brand style={{ fontSize: 20, color:'#0c420c'}} />
-                <Text style={{color:'#0c420c'}}>Forum</Text>
-            </Button>
-            <Button active style={{ backgroundColor:'rgb(237, 255, 237)' , borderRadius:0}}>
-                <FontAwesome5 name={"chart-line"} brand style={{ fontSize: 20, color:'#0c420c'}} />
-                <Text style={{color:'#0c420c'}}>Prediction</Text>
-            </Button>
-          </FooterTab>
-        </Footer> */}
+      {
+        this.state.loaded ?
+        <View>
+          <FlatList
+            numColumns={1}
+            data={this.state.data}
+            keyExtractor={item => item.id.toString()}
+            renderItem={({ item }) => (
+                <View>
+                  <ForumCards navigation={this.props.navigation} fourmid={item.id} titleName={item.title}  imageUrl={item.imageUrl} description={item.description}  />
+                </View>
+          )}
+          />
+        </View> :
+        <LoadScreen/>
+      }  
+
 
         <BottomTab navigation={this.props.navigation} tab="forum"/>
 

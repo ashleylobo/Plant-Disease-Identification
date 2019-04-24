@@ -1,0 +1,1 @@
+export default BACKENDIP = 'https://plantdiseasecomps2020.herokuapp.com'

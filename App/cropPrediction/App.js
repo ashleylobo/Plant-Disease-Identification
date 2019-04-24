@@ -29,6 +29,7 @@ import ForumQuery from './components/ForumQuery';
 import Instruction from'./components/Instructions';
 import QuestionForm from './components/QuestionForm';
 import NoPage from './components/NoPage/NoPage';
+import PredictionFromServer from './components/PredictionFromServer';
 
 //-----------------------Drawer navigation Bar ---------------------------------------
 console.disableYellowBox = true;
@@ -139,6 +140,14 @@ const page13 = createDrawerNavigator({
 },
 );
 
+const page14 = createDrawerNavigator({
+  predictionFromServer:{screen: PredictionFromServer},
+},
+{
+  contentComponent: SideBar,
+},
+);
+
 
 //-----------------------Main App navigation ---------------------------------------
 
@@ -158,7 +167,8 @@ const AppNavigator = createStackNavigator({
   profile9:page9,
   profile10:page10,
   profile11:page11,
-  profile12:page12
+  profile12:page12,
+  profile14:page14
   },
   {
   defaultNavigationOptions: ({navigation}) => {

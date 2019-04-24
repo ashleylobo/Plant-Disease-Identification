@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, AsyncStorage } from 'react-native';
+import { View, StyleSheet, AsyncStorage, Image, ScrollView } from 'react-native';
 import { Text , Button } from 'native-base'
 import t from 'tcomb-form-native';
 import ImagePicker from "react-native-image-picker";
 import strings from '../../constants/strings';
-
+import axios from "axios";
+import backendip from '../../constants/backendip';
 
 
 
@@ -23,7 +24,10 @@ export default class QuestionForm extends Component {
         qname : '',
         type : 'default',
         fund : t.struct({}),
-        start : false
+        start : false,
+        imageLink : "",
+        fd : {},
+        uri : false
     };
   }
 
@@ -80,21 +84,101 @@ export default class QuestionForm extends Component {
   }
 
 
+  async componentDidMount(){
+
+    const granted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.CAMERA,
+      {
+        title: "Cool Photo App Camera Permission",
+        message:
+          "Cool Photo App needs access to your camera " +
+          "so you can take awesome pictures.",
+        buttonNeutral: "Ask Me Later",
+        buttonNegative: "Cancel",
+        buttonPositive: "OK"
+      }
+    );
+    
+    console.log(granted);
+
+
+  }
+
 
   handleChange = (value) => {
     this.setState({value});
     }
 
-    handleSubmit = () => {
-        const value = this._form.getValue();
-        console.log(value)
-    }
+  handleSubmit = async () => {
+      const value = this._form.getValue();
+
+      var link = await this._uploadToImgur();
+      console.log(value , link)
+  }
+
+  _uploadToImgur = () => {
+        return new Promise((resolve, reject) => {
+          console.log("Uploading...");
+          var url = `${backendip}/upload`;
+          var fd = this.state.fd;
+          const ts = this;
+          axios({
+            method: "post",
+            url: url,
+            data: fd,
+            config: { headers: { "content-type": "multipart/form-data" } }
+          })
+            .then(function(response) {
+              //handle success
+              var data = response.data.link;
+              ts.setState({ imageLink: data });
+              console.log("data is", data);
+              resolve(data);
+            })
+            .catch(function(response) {
+              //handle error
+              console.log("[RESPONSE: ]", response);
+              reject(response);
+            });
+        });
+    };
+
+    _getPhotos = async () => {
+      var fd = new FormData();
+      ImagePicker.showImagePicker({}, response => {
+        console.log(response.uri);
+
+        this.setState({
+          imageData: {
+            uri: response.uri,
+            type: "image/jpeg",
+            name: response.fileName
+          }
+        });
+
+        fd.append("file", {
+          uri: response.uri,
+          type: "image/jpeg",
+          name: response.fileName
+        });
+
+        this.setState({ fd , uri : response.uri });
+
+        console.log(fd, "image data");
+
+        // this._uploadToImgur();s
+        console.log("LOADED");
+    });
+
+  }
 
   render() {
     return (
-      <View style={ styles.container }>
+      <ScrollView>
 
-            {
+        <View style={styles.container} >
+
+        {
               this.state.start &&
               <Form 
               type={ this.state.fund }
@@ -106,14 +190,29 @@ export default class QuestionForm extends Component {
             }
 
 
+            <Button rounded full style={styles.button}
+                        onPress={ this._getPhotos }
+                        >
+                        <Text style={ styles.text } > { strings.UploadImage } </Text>
+            </Button>
 
-            <Button rounded full
+            {
+              this.state.uri != false &&
+              <Image style={{margin:10, alignContent : 'center' , width: 250, height: 250 }}
+                      source={{ uri : this.state.uri }}
+              />
+            }
+            <Button rounded full style={styles.button}
                         onPress={ this.handleSubmit }
                         >
                         <Text style={ styles.text } > { strings.Submit } </Text>
             </Button>
 
-      </View>
+        </View>
+
+
+
+      </ScrollView>
     );
   }
 }
@@ -123,13 +222,18 @@ export default class QuestionForm extends Component {
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
-        marginTop: 50,
-        padding: 20,
+        margin: 20,
+        padding: 10,
         backgroundColor: '#ffffff',
       },
     text : {
         fontSize : 25,
         fontWeight: 'bold'
         
+    },
+    button : {
+      padding : 10,
+      marginTop : 10,
+      backgroundColor:'#0c420c'
     }
 });

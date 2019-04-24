@@ -22,7 +22,8 @@ export default strings = new LocalizedStrings({
         Name : "नाम",
         Question : "सवाल",
         NameOfCrop : "फसल का नाम",
-        Submit : "जमा करें" 
+        Submit : "जमा करें",
+        UploadImage : "तस्वीर डालिये" 
 
     },
     en : {
@@ -45,7 +46,8 @@ export default strings = new LocalizedStrings({
         Name : "Name",
         Question : "Question",
         NameOfCrop : "Name Of Crop",
-        Submit : "Submit" 
+        Submit : "Submit",
+        UploadImage : "Upload Image" 
     }
 })
 
