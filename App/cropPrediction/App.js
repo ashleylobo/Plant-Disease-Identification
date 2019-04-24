@@ -13,6 +13,8 @@ import {Button, Item, Input, Icon } from 'native-base';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { createStackNavigator, createAppContainer,  createDrawerNavigator} from "react-navigation";
 
+import strings from './constants/strings';
+
 import LoginSignUp from './components/LoginSignUp';
 import Forum from './components/Forum';
 import CropSelectionPage from './components/CropSelectionPage';

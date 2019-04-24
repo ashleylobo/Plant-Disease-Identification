@@ -14,7 +14,15 @@ export default strings = new LocalizedStrings({
         Mango : "आम",
         Melon : "खरबूज",
         Orange : "नारंगी",
-        Onions : "प्याज"
+        Onions : "प्याज",
+        Homepage: "मुख्य पृष्ठ",
+        Forum : "सवाल",
+        Prediction : "पूर्वकथन",
+        Advisory : "सलाहकार",
+        Name : "नाम",
+        Question : "सवाल",
+        NameOfCrop : "फसल का नाम",
+        Submit : "जमा करें" 
 
     },
     en : {
@@ -29,7 +37,15 @@ export default strings = new LocalizedStrings({
         Mango : "Mango",
         Melon : "Melon",
         Orange : "Orange",
-        Onions : "Onions"
+        Onions : "Onions",
+        Homepage : "Homepage",
+        Forum : "Forum",
+        Prediction : "Prediction",
+        Advisory : "Advisory",
+        Name : "Name",
+        Question : "Question",
+        NameOfCrop : "Name Of Crop",
+        Submit : "Submit" 
     }
 })
 

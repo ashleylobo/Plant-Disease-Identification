@@ -5,6 +5,7 @@ import { Container,Fab, Content, Footer, FooterTab, Button} from 'native-base';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import  ForumCards  from './forumCards'
 import axios from 'axios';
+import BottomTab from '../BottomTab';
 
 //onPress={() => this.props.naviagtion.navigate('answersToQuestions',{card:{titleName:item.title,imageUrl:item.imageUrl,description:item.description}})}
 
@@ -75,7 +76,7 @@ export default class Forum extends Component {
       </View>
 
  
-        <Footer style={{position:'absolute',bottom: 0}} >
+        {/* <Footer style={{position:'absolute',bottom: 0}} >
           <FooterTab >
             <Button style={{backgroundColor:'rgb(237, 255, 237)', borderRadius:0}}
               onPress={() => this.props.navigation.navigate('homePage')}>
@@ -92,7 +93,9 @@ export default class Forum extends Component {
                 <Text style={{color:'#0c420c'}}>Prediction</Text>
             </Button>
           </FooterTab>
-        </Footer>
+        </Footer> */}
+
+        <BottomTab navigation={this.props.navigation} tab="forum"/>
 
     
 

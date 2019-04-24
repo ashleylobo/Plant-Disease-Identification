@@ -4,7 +4,7 @@ import {Button} from 'native-base';
 import LoginSignUp from '../LoginSignUp';
 import { StackActions, NavigationActions } from 'react-navigation';
 
-// import strings from '../../constants/strings';
+import strings from '../../constants/strings';
 
 const routes = [
   {name:require("../../assets/images/apple_vector.jpg"), title:"apple"},
@@ -121,17 +121,17 @@ export default class CropSelectionPage extends Component {
 
   _setEn = async () =>{
 
-    // await AsyncStorage.setItem('defaultLan', 'en');
-    // strings.setLanguage('en');
-    // this.setState({ defaultLan : 'en' })
+    await AsyncStorage.setItem('defaultLan', 'en');
+    strings.setLanguage('en');
+    this.setState({ defaultLan : 'en' })
 
   }
 
   _setHi = async () =>{
 
-    // await AsyncStorage.setItem('defaultLan', 'hi');
-    // strings.setLanguage('hi');
-    // this.setState({ defaultLan : 'hi' })
+    await AsyncStorage.setItem('defaultLan', 'hi');
+    strings.setLanguage('hi');
+    this.setState({ defaultLan : 'hi' })
 
   }
 
@@ -153,7 +153,7 @@ export default class CropSelectionPage extends Component {
                   <View style={{ flex:1, flexDirection:"column", borderWidth:this.state[i.item.title] , margin:5, borderColor:"black", borderRadius:25}}>
                     <TouchableOpacity onPress={()=> this.state[i.item.title] ? this.setState({[i.item.title]: 0 , borderr:0}):this.setState({[i.item.title]: 2, changeState:1,borderr:1})}>
                       <Image style={{alignSelf:"center", width:65,height:65,margin:7}} source={i.item.name} ></Image>
-                      <Text style={{textAlign:"center", fontSize:18, marginLeft:15, marginRight:15,borderRadius:5, padding:3,color:"black"}}>{ i.item.title }</Text>
+                      <Text style={{textAlign:"center", fontSize:18, marginLeft:15, marginRight:15,borderRadius:5, padding:3,color:"black"}}>{strings[i.item.title]}</Text>
                       {/* <CheckBox {strings[i.item.title]} style={{position:'absolute' , left:0 }} checked={this.state[i.item.title] } on={true}></CheckBox> */}
                     </TouchableOpacity>
                   </View>
