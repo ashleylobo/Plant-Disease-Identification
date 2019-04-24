@@ -47,9 +47,7 @@ export default class BottomTab extends Component {
   render() {
     return (
 
-    <View style={{bottom:0 }}>
-
-        <Footer style={{position:'absolute',bottom: 0}}>
+        <Footer style={{bottom: 0}}>
           <FooterTab >
             <Button style={{backgroundColor:this.homePageBg, borderRadius:0}}
               onPress={() => this.navigation.navigate('homePage')}>
@@ -67,8 +65,6 @@ export default class BottomTab extends Component {
             </Button>
           </FooterTab>
         </Footer>
-
-      </View>
 
     );
   }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text , ScrollView , Image,TouchableOpacity,FlatList, AsyncStorage } from 'react-native';
-import { Container,Fab, Content, Footer, FooterTab, Button, Icon } from 'native-base';
+import { Container,Fab, Content, Footer, FooterTab, Button, Icon,Input,Item } from 'native-base';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Advisory from './Advisory';
 import strings from '../../constants/strings';
@@ -54,38 +54,40 @@ export default class HomePage extends Component {
       return (
 
         <View style={{flex:1}}>
-        
-          <ScrollView>
-            <FlatList 
-              horizontal
-              extraData={this.state}
-              data = {this.state.imgs}
-              keyExtractor={(item, index) => index.toString()}
-              showsHorizontalScrollIndicator={false}
-              renderItem={i => {
-                  const isSelected = true 
-                  console.log(i)
-                  return (
-                      <View style={{ flex:1 , margin:5}}>
-                        <TouchableOpacity onPress={()=>{
-                          this.props.navigation.navigate('cropDetailPage',{name:i.item.title} )}} >
-                          <Image style={{alignSelf:"center", width:75,height:75,borderRadius:38, margin:7}} source={i.item.url} ></Image>
-                          <Text style={{textAlign:'center' , color:'#0c420c' , fontSize:15}} >{strings[i.item.title]}</Text>
-                        </TouchableOpacity>
-                      </View>
-                  )}}
-             >
-            </FlatList>
 
-            <Advisory style={{marginTop:10}}></Advisory>
+          <View style={{flex:1}}>
+
+            <ScrollView >
+              <FlatList 
+                horizontal
+                extraData={this.state}
+                data = {this.state.imgs}
+                keyExtractor={(item, index) => index.toString()}
+                showsHorizontalScrollIndicator={false}
+                renderItem={i => {
+                    const isSelected = true 
+                    console.log(i)
+                    return (
+                        <View style={{ flex:1 , margin:5}}>
+                          <TouchableOpacity onPress={()=>{
+                            this.props.navigation.navigate('cropDetailPage',{name:i.item.title} )}} >
+                            <Image style={{alignSelf:"center", width:75,height:75,borderRadius:38, margin:7}} source={i.item.url} ></Image>
+                            <Text style={{textAlign:'center' , color:'#0c420c' , fontSize:15}} >{strings[i.item.title]}</Text>
+                          </TouchableOpacity>
+                        </View>
+                    )}}
+              >
+              </FlatList>
+
+              <Advisory style={{marginTop:10}}></Advisory>
             
+            </ScrollView>
 
-          </ScrollView>
+          </View>
 
-          {/* chalkboard-teacher */}
-
-          <BottomTab tab="homePage" navigation={ this.props.navigation } />
-
+          <View style={{marginTop:20}}>
+            <BottomTab tab="homePage" navigation={ this.props.navigation } />
+          </View>
 
           <Fab
             active={this.state.active}
@@ -94,6 +96,20 @@ export default class HomePage extends Component {
             position="bottomRight">
             <FontAwesome5 name={"chalkboard-teacher"} brand style={{ fontSize: 20, color:'#0c420c'}} />
           </Fab>
+          
+          {/* chalkboard-teacher */}
+
+          {/* <View style={{bottom:0}}>
+            <BottomTab tab="homePage" navigation={ this.props.navigation } />
+          </View>
+            
+          <Fab
+            active={this.state.active}
+            containerStyle={{ }}
+            style={{ backgroundColor: 'white' , marginBottom:45}}
+            position="bottomRight">
+            <FontAwesome5 name={"chalkboard-teacher"} brand style={{ fontSize: 20, color:'#0c420c'}} />
+          </Fab> */}
 
         </View>
       );

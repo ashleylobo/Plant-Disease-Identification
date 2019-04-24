@@ -183,41 +183,21 @@ export default class ResultOfPredictedDisease extends Component {
                   <Text style={{fontSize:18 , fontWeight:'bold',color:'white'}}>Close</Text>
                 </Button>
 
-                {/* <Button style={{ paddingTop : 10 }} title="Close" onPress={() => {
-                    this.setModalVisible(!this.state.predicted);
-                  }}
-                /> */}
-
                 <Button style={{marginBottom:15,alignSelf:'center',justifyContent:'center',backgroundColor:'#0c420c' , borderRadius:5 ,color:'white',width:Dimensions.get('window').width-200,height:55}}
                     onPress={() => { this.setState( { showRemedy : true } )}}>
                   <Text style={{fontSize:18 , fontWeight:'bold',color:'white'}}>Show Tips/Remedy</Text>
                 </Button>
                 
-                {/* <Button title="Show Tips/Remedy" onPress={() => {
-                    this.setState( { showRemedy : true } );
-                  }}
-                /> */}
 
                 <Button style={{marginBottom:15,alignSelf:'center',justifyContent:'center',backgroundColor:'#0c420c' , borderRadius:5 ,color:'white',width:Dimensions.get('window').width-200,height:55}}
                     onPress={() => {this.setModalVisible(!this.state.predicted);this.props.navigation.navigate("forum")}}>
                   <Text style={{fontSize:18 , fontWeight:'bold',color:'white'}}>Go to Forum</Text>
                 </Button>
 
-                {/* <Button title="Go to Forum" 
-                onPress={()=>{
-                  this.setModalVisible(!this.state.predicted)
-                  this.props.navigation.navigate("forum")
-                }}
-                />                 */}
-
                 <Button style={{marginBottom:15,alignSelf:'center',justifyContent:'center',backgroundColor:'#0c420c' , borderRadius:5 ,color:'white',width:Dimensions.get('window').width-200,height:55}}
                     onPress={this.handleCall}>
                   <Text style={{fontSize:18 , fontWeight:'bold',color:'white'}}>Call Helpline</Text>
                 </Button>
-
-
-              {/* <Button title="Call Helpline" onPress={this.handleCall}
-              /> */}
 
               </View>
             </ ScrollView>
