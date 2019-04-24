@@ -32,7 +32,7 @@ export default class AnswersToQuestions extends Component {
       answer : newComms,
       upvotes : '0',
       downvotes : '0',
-      name : 'Prashant',
+      name : 'Gopu',
       type : this.state.type
     }
 

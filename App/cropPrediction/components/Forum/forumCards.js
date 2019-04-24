@@ -21,13 +21,20 @@ export default class ForumCards extends Component {
         <Card
             // title={this.props.titleName}
             image={{ uri : this.props.imageUrl }}>
-            
+            <View style={{flexDirection:'row',justifyContent: 'space-between'}}>
+            <Text>
+              Jacob Batliwalla
+            </Text>
+            <Text >
+              Raigad
+            </Text>
+            </View>
             <Text style={{color:'black',fontSize:20}} >
             { this.props.titleName.toUpperCase() }
             </Text>
             {/* <View style = {styles.lineStyle} /> */}
             
-            <View style={{flex: 1, flexDirection: 'row',justifyContent: 'space-between',paddingTop:8,paddingBottom:5}}>
+            {/* <View style={{flex: 1, flexDirection: 'row',justifyContent: 'space-between',paddingTop:8,paddingBottom:5}}>
 
               <View style={{flexDirection:'row'}}>
                 <FontAwesome5 name={"thumbs-up"} brand style={{ paddingLeft:15,paddingTop:3,fontSize: 20, color:'#0c420c'}} />
@@ -44,7 +51,7 @@ export default class ForumCards extends Component {
                 <Text style={{paddingLeft:15,paddingRight:15,color:'black',fontSize:20}} >4</Text>
               </View>
 
-            </View>
+            </View> */}
 
             </Card>
 
