@@ -11,8 +11,8 @@ const routes = [
                 {title:"homePage" , name:"HomePage" , icon:"question-circle"},
                 {title:"loginSignUp",name:"LoginSignUp", icon:"filter"},
                 {title:"forum",name:"Forum", icon:"comments"},
-                {title:"infoAndSelectImage",name:"InfoAndSelectImage", icon:"comment-dots"},
-                {title:"resultOfPredictedDisease",name:"ResultOfPredictedDisease", icon:"comment-dots"},
+                // {title:"infoAndSelectImage",name:"InfoAndSelectImage", icon:"comment-dots"},
+                {title:"predictionFromServer",name:"Check Disease", icon:"comment-dots"},
                 // {title:"answersToQuestions",name:"AnswersToQuestions", icon:"comment-dots"},
               ];
 

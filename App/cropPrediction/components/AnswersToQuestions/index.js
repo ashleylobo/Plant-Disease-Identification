@@ -4,6 +4,7 @@ import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import {Fab} from 'native-base';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import axios from 'axios';
+import backendip from '../../constants/backendip';
 
 export default class AnswersToQuestions extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ export default class AnswersToQuestions extends Component {
     let myData = this.props.navigation.getParam("card");
     
     var coms = []
-    axios.get(`https://plantdiseasecomps2020.herokuapp.com/listans?quno=${myData.id}`)
+    axios.get(`${backendip}/listans?quno=${myData.id}`)
           .then( res =>{
             console.log("called api")
             var data = res.data['list1'];
