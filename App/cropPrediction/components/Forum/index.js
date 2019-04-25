@@ -67,27 +67,28 @@ export default class Forum extends Component {
 
       <View style={{flex:1}}>
 
-      {
-        this.state.loaded ?
-        <View>
-          <FlatList
-            numColumns={1}
-            data={this.state.data}
-            keyExtractor={item => item.id.toString()}
-            renderItem={({ item }) => (
-                <View>
-                  <ForumCards navigation={this.props.navigation} location={item.location} fourmid={item.id} titleName={item.title}  imageUrl={item.imageUrl} description={item.description} />
-                </View>
-          )}
-          />
-        </View> :
-        <LoadScreen/>
-      }  
+      <View style={{flex:1}}>
+        {
+          this.state.loaded ?
+          <View>
+            <FlatList
+              numColumns={1}
+              data={this.state.data}
+              keyExtractor={item => item.id.toString()}
+              renderItem={({ item }) => (
+                  <View>
+                    <ForumCards navigation={this.props.navigation} location={item.location} fourmid={item.id} titleName={item.title}  imageUrl={item.imageUrl} description={item.description} />
+                  </View>
+            )}
+            />
+          </View> :
+          <LoadScreen/>
+        }  
+      </View>
 
-
-        <BottomTab navigation={this.props.navigation} tab="forum"/>
-
-    
+      <View style={{marginTop:20}}>
+        <BottomTab tab="forum" navigation={ this.props.navigation } />
+      </View>
 
 
       <Fab
