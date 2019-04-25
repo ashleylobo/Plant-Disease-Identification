@@ -46,8 +46,8 @@ export default class Forum extends Component {
           title : ele.questions,
           description : "",
           type : ele.type,
-          imageUrl : ele.image_path
-          
+          imageUrl : ele.image_path,
+          location : ele.location
 
         }
         console.log(query)
@@ -76,7 +76,7 @@ export default class Forum extends Component {
             keyExtractor={item => item.id.toString()}
             renderItem={({ item }) => (
                 <View>
-                  <ForumCards navigation={this.props.navigation} fourmid={item.id} titleName={item.title}  imageUrl={item.imageUrl} description={item.description} />
+                  <ForumCards navigation={this.props.navigation} location={item.location} fourmid={item.id} titleName={item.title}  imageUrl={item.imageUrl} description={item.description} />
                 </View>
           )}
           />

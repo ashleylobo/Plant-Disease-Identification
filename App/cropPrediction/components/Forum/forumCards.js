@@ -2,14 +2,26 @@ import React, { Component }from 'react';
 import { View, Text, StyleSheet,TouchableOpacity } from 'react-native';
 import { Card, ListItem, Icon } from 'react-native-elements';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-
+const users = [ 'Jacob' , 'Ram Manohor' , 'Pooja Patil' , 'Riya Sharma' , 'Chetan Aroha' ]
+const locations = [ 'Raigad' , 'Pune' , 'Ahmedabad' , 'Latur' , 'Panchgani' , 'Vasai' , 'Dahanu' ]
 
 export default class ForumCards extends Component {
   constructor(props)  {
       super(props);
+      console.log(this.props, "========")
+      this.state = {
+        location : locations[ parseInt(Math.random()*100 + 1) % 7 ],
+        username : users[ parseInt(Math.random()*100 + 1) % 5 ]
+      }
 
   }
 
+  componentWillMount(){
+
+    if ( (this.props.location) != null ){
+      this.state.location = this.props.location;
+    }
+  }
 
   render() {
     console.warn(this.props.description)
@@ -23,10 +35,10 @@ export default class ForumCards extends Component {
             image={{ uri : this.props.imageUrl }}>
             <View style={{flexDirection:'row',justifyContent: 'space-between'}}>
             <Text>
-              Jacob Batliwalla
+              { this.state.username }
             </Text>
             <Text >
-              Raigad
+              { this.state.location }
             </Text>
             </View>
             <Text style={{color:'black',fontSize:20}} >

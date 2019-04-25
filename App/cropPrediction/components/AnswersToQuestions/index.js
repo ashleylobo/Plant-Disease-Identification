@@ -21,7 +21,7 @@ export default class AnswersToQuestions extends Component {
     };
   }
 
-  addCommentList(){
+  async addCommentList(){
     console.log('comments',this.state.comments)
     console.log('value',this.state.inputComment)
     var comms = this.state.comments
@@ -35,6 +35,17 @@ export default class AnswersToQuestions extends Component {
       name : 'Gopu',
       type : this.state.type
     }
+
+    var query = {
+      replyf : newDictComment.answer,
+      questno : this.state.id,
+      questtype : newDictComment.type,
+      username : newDictComment.name,
+    }
+
+    await axios.post( `${backendip}/reply2` , query )
+    .then( data => console.log(data.data) )
+    .catch(err => console.log(err))
 
     comms.push(newDictComment)
 
@@ -70,8 +81,13 @@ export default class AnswersToQuestions extends Component {
               coms.push( query );
 
             });
-
-            var typeEle = coms[0].type
+            
+            var typeEle;
+            if ( coms[0]  ){
+              typeEle = coms[0].type
+            }else{
+              typeEle = 'Grapes'
+            }
 
             this.setState({
               title:myData.title,
@@ -82,6 +98,7 @@ export default class AnswersToQuestions extends Component {
               type:typeEle
               
             })
+            console.log(this.state);
 
           }).catch(err => console.log(err , " error"))
   }

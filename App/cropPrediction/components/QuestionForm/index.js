@@ -26,7 +26,7 @@ export default class QuestionForm extends Component {
         fund : t.struct({}),
         start : false,
         imageLink : "",
-        fd : {},
+        fd : false,
         uri : false
     };
   }
@@ -57,6 +57,9 @@ export default class QuestionForm extends Component {
           },
           question: {
           label: strings.Question
+          },
+          location : {
+            label : strings.Location
           }
       }
   }
@@ -76,7 +79,8 @@ export default class QuestionForm extends Component {
       var fund = t.struct({
         qname: t.String,
         type: work,
-        question : t.String
+        question : t.String,
+        location : t.String
       });
 
       this.setState({fund , start : true})  
@@ -113,7 +117,18 @@ export default class QuestionForm extends Component {
       const value = this._form.getValue();
 
       var link = await this._uploadToImgur();
-      console.log(value , link)
+
+      axios.post(`${backendip}/askqts`, {
+        yourq: value.question,
+        type : value.type,
+        name : value.qname,
+        image_path : link,
+        location : value.location
+      }).then(res =>{
+        console.log(res.data)
+      }).catch(err => console.log(err))
+
+      console.log(value , "link")
   }
 
   _uploadToImgur = () => {
@@ -121,6 +136,9 @@ export default class QuestionForm extends Component {
           console.log("Uploading...");
           var url = `${backendip}/upload`;
           var fd = this.state.fd;
+          if( ! fd  ){
+            reject("noimage")
+          }
           const ts = this;
           axios({
             method: "post",
