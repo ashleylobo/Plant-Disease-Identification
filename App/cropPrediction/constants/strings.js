@@ -23,7 +23,8 @@ export default strings = new LocalizedStrings({
         Question : "सवाल",
         NameOfCrop : "फसल का नाम",
         Submit : "जमा करें",
-        UploadImage : "तस्वीर डालिये" 
+        UploadImage : "तस्वीर डालिये",
+        Location : "जगह का नाम" 
 
     },
     en : {
@@ -47,7 +48,8 @@ export default strings = new LocalizedStrings({
         Question : "Question",
         NameOfCrop : "Name Of Crop",
         Submit : "Submit",
-        UploadImage : "Upload Image" 
+        UploadImage : "Upload Image",
+        Location : "Location" 
     }
 })
 

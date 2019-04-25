@@ -27,7 +27,8 @@ export default class Forum extends Component {
     super(props);
     this.state = {
       data : [],
-      loaded : false
+      loaded : false,
+      active:false
     };
   }
 
@@ -46,8 +47,8 @@ export default class Forum extends Component {
           title : ele.questions,
           description : "",
           type : ele.type,
-          imageUrl : ele.image_path
-          
+          imageUrl : ele.image_path,
+          location : ele.location
 
         }
         console.log(query)
@@ -67,36 +68,48 @@ export default class Forum extends Component {
 
       <View style={{flex:1}}>
 
-      {
-        this.state.loaded ?
-        <View>
-          <FlatList
-            numColumns={1}
-            data={this.state.data}
-            keyExtractor={item => item.id.toString()}
-            renderItem={({ item }) => (
-                <View>
-                  <ForumCards navigation={this.props.navigation} fourmid={item.id} titleName={item.title}  imageUrl={item.imageUrl} description={item.description} />
-                </View>
-          )}
-          />
-        </View> :
-        <LoadScreen/>
-      }  
+      <View style={{flex:1}}>
+        {
+          this.state.loaded ?
+          <View>
+            <FlatList
+              numColumns={1}
+              data={this.state.data}
+              keyExtractor={item => item.id.toString()}
+              renderItem={({ item }) => (
+                  <View>
+                    <ForumCards navigation={this.props.navigation} location={item.location} fourmid={item.id} titleName={item.title}  imageUrl={item.imageUrl} description={item.description} />
+                  </View>
+            )}
+            />
+          </View> :
+          <LoadScreen/>
+        }  
+      </View>
 
+      <View style={{marginTop:20}}>
+        <BottomTab tab="forum" navigation={ this.props.navigation } />
+      </View>
 
-        <BottomTab navigation={this.props.navigation} tab="forum"/>
-
-    
-
+      {/* this.props.navigation.navigate('questionForm') */}
 
       <Fab
         active={this.state.active}
         containerStyle={{ }}
         style={{ backgroundColor: 'white' , marginBottom:45}}
         position="bottomRight"
-        onPress={ () => this.props.navigation.navigate('questionForm') }>
-        <FontAwesome5 name={"chalkboard-teacher"} brand style={{ fontSize: 20, color:'#0c420c'}} />
+        onPress={ () => this.setState({active : !this.state.active}) }>
+
+        <FontAwesome5 name={"plus"} brand style={{ fontSize: 30, color:'#0c420c'}} />
+
+        <Button style={{ backgroundColor: '#0c420c', marginBottom:52 }}
+          onPress={() => this.props.navigation.navigate('questionForm')}>
+          <FontAwesome5 name={"cloud-upload-alt"} brand style={{ fontSize: 20, color:'#ffffff'}} /> 
+        </Button>
+            
+        <Button style={{ backgroundColor: '#0c420c', marginBottom:52 }}>
+          <FontAwesome5 name={"chalkboard-teacher"} brand style={{ fontSize: 20, color:'#ffffff'}} />
+        </Button>
       </Fab>
 
     </View>
