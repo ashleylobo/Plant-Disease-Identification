@@ -91,7 +91,7 @@ export default class SignIn extends Component {
                         <Button rounded info style={{textAlign:'center',justifyContent:'center',width:260 ,marginTop: 30, alignSelf: 'center', backgroundColor:"#286028"}}
                              onPress={ () => this.props.navigation.navigate('cropSelectionPage')  }  >
                                 
-                            <Text >Student Login</Text>
+                            <Text >Login</Text>
                         </Button>
 
                     </View>
