@@ -27,7 +27,8 @@ export default class Forum extends Component {
     super(props);
     this.state = {
       data : [],
-      loaded : false
+      loaded : false,
+      active:false
     };
   }
 
@@ -90,14 +91,25 @@ export default class Forum extends Component {
         <BottomTab tab="forum" navigation={ this.props.navigation } />
       </View>
 
+      {/* this.props.navigation.navigate('questionForm') */}
 
       <Fab
         active={this.state.active}
         containerStyle={{ }}
         style={{ backgroundColor: 'white' , marginBottom:45}}
         position="bottomRight"
-        onPress={ () => this.props.navigation.navigate('questionForm') }>
-        <FontAwesome5 name={"chalkboard-teacher"} brand style={{ fontSize: 20, color:'#0c420c'}} />
+        onPress={ () => this.setState({active : !this.state.active}) }>
+
+        <FontAwesome5 name={"plus"} brand style={{ fontSize: 30, color:'#0c420c'}} />
+
+        <Button style={{ backgroundColor: '#0c420c', marginBottom:52 }}
+          onPress={() => this.props.navigation.navigate('questionForm')}>
+          <FontAwesome5 name={"cloud-upload-alt"} brand style={{ fontSize: 20, color:'#ffffff'}} /> 
+        </Button>
+            
+        <Button style={{ backgroundColor: '#0c420c', marginBottom:52 }}>
+          <FontAwesome5 name={"chalkboard-teacher"} brand style={{ fontSize: 20, color:'#ffffff'}} />
+        </Button>
       </Fab>
 
     </View>

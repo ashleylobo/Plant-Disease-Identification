@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View,Button ,Image,ScrollView,BackHandler} from 'react-native'
+import { Text, StyleSheet,Dimensions, View,Image,ScrollView,BackHandler} from 'react-native'
 import ImagePicker from 'react-native-image-picker';
-import {Fab,Icon} from 'native-base';
+import {Fab,Icon,Button} from 'native-base';
 import Toggle from '../ToggleComponent'
 import Images from 'assets/images'
 import plants from '../../constants/plants';
@@ -119,7 +119,12 @@ export default class CropDetailPage extends Component {
 
         <Text> this is  {cropName} </Text>
         {this.showDetails(cropName)}
-        <Button title="Select Image" onPress={()=>this.props.navigation.navigate("resultOfPredictedDisease",{group:plants[this.state.index].group})}/>
+
+        <Button style={{marginTop:20,alignSelf:'center',justifyContent:'center',backgroundColor:'#0c420c' , borderRadius:5 ,color:'white',width:Dimensions.get('window').width-100,height:55}}
+            onPress={()=>this.props.navigation.navigate("resultOfPredictedDisease",{group:plants[this.state.index].group})}>
+          <Text style={{fontSize:18 , fontWeight:'bold',color:'white'}}>Select Image</Text>
+        </Button>
+
 
       </ScrollView>
     )
