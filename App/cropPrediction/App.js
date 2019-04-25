@@ -183,6 +183,7 @@ const AppNavigator = createStackNavigator({
         color: "white",
       },
       headerStyle: {
+        
         borderBottomColor:"white",
         borderBottomWidth:1,
         backgroundColor: "#0c420c"
