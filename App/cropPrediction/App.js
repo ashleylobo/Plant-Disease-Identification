@@ -50,13 +50,13 @@ const page1 = createDrawerNavigator({
 },
 );
 
-const page2 = createDrawerNavigator({
-  loginSignUp:{screen:LoginSignUp},
-},
-{
-  contentComponent: SideBar,
-},
-);
+// const page2 = createDrawerNavigator({
+//   loginSignUp:{screen:LoginSignUp},
+// },
+// {
+//   contentComponent: SideBar,
+// },
+// );
 
 const page3 = createDrawerNavigator({
   answersToQuestions:{screen:AnswersToQuestions},
@@ -153,11 +153,11 @@ const page14 = createDrawerNavigator({
 
 
 const AppNavigator = createStackNavigator({
-   
+  loginSignUp:{screen:LoginSignUp},
   noPage : page13,  
   profile: Mdn,
   profile1:page1,
-  profile2:page2,
+  // profile2:page2,
   profile3:page3,
   profile4:page4,
   profile5:page5,

@@ -1,143 +1,72 @@
-import React, { Component } from 'react';
-import { View, Text,StyleSheet,Image ,ScrollView,Dimensions } from 'react-native';
+import React, {Component} from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+import {Container, Header, Tab, Tabs, Button, TabHeading, Icon} from 'native-base';
+import SignIn from './SignIn';
+import Register from './Register';
 
-import {Card,CardItem, Thumbnail, Button, Icon, Left,Body,Right,Content,Container} from 'native-base';
-import Images from "assets/images"
-export default class LoginSignUp extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+import {NetInfo} from 'react-native';
+
+export default class LoginStudent extends Component {
+    static navigationOptions = {
+        header: null,
     };
-  }
 
-  render() {
-  
-    const {headerTitle,textFormat,headerTitle2}=styles  
-    return (
-      <Container>
-      <Content style={{ flex: 1, backgroundColor: '#F5FCFF',flexDirection:'row',borderColor:'black',borderWidth:10, borderColor:'black',borderWidth:10}}>
-      <ScrollView>
-      <View style={{flex:1,justifyContent:'flex-start', backgroundColor:"#b7babf",borderRadius:20}}>
-      
-       <Text style={headerTitle} >   Dos                     <Text style={headerTitle2}>  Dont's </Text></Text>
-       
-       <Card style={{flex: 1}}>
-            <CardItem>
-              <View style={{flex:1,flexDirection:'row'}} >
-              <View  >
-              <Thumbnail source={Images.right}style={{height:25,width:30}}  />
-                  <Text style={textFormat}>Take picture in a well lighted area</Text>
-                
-              </View>
-                
+    constructor(props) {
+        super(props);
+        this.state = {
+            abc: 1,
+        };
+    }
 
-                <View>
-  
-                <Thumbnail source={Images.wrong}style={{height:25,width:30}}  />
-        
-  
-                  
-                   <Text style={textFormat} >Don't click in dark environment</Text>
-  
-                </View>
-                </View>
 
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Image source={Images.light} style={{height:130,width:140, borderRadius:10}}/>
-              
-              </Body>
-              <Body>
-                <Image source={Images.dark} style={{height:130,width:140, borderRadius:10}}/>
-                
-              </Body>
-            </CardItem>
-            <CardItem>
-              <View>
-              <Thumbnail source={Images.right}style={{height:25,width:30}}  />
+    switchFun() {
+        this.props.navigation.navigate('signup')
+    }
 
-                
-                  <Text style={textFormat} >Take picture at proper distance</Text>
-                
-              </View>
+    switchMap() {
 
-                
+        NetInfo.isConnected.fetch().then(isConnected => {
+            if (isConnected) {
+               // this.props.navigation.navigate('listTimeTable');
+                //console.warn("Success");
+            } else {
+                //this.props.navigation.navigate('rout');
+            }
+        })
+    } 
 
-              <View>
+    render() {
+        console.disableYellowBox = true;
+        return ( 
+            <Container>
+                <Header style={{height: 0}} hasTabs/>
+                <Tabs tabBarUnderlineStyle={{backgroundColor: '#00a4fe', opacity:0}} >
+                    <Tab activeTextStyle={{color: '#fff', fontWeight: 'bold'}}
+                         textStyle={{color: '#fff', fontSize: 12}}
+                         tabStyle={{backgroundColor: '#286028', height: 60}}
+                         activeTabStyle={{backgroundColor: '#0c420c', height: 60}}
+                         heading="Sign in">
+                        <SignIn navigation={this.props.navigation}/>
+                    </Tab>
 
-              <Thumbnail source={Images.wrong}style={{height:25,width:30}}  />
-      
-
-  
-                 <Text style={textFormat} >Don't click picture far </Text>
-
-              </View>
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Image source={Images.distance} style={{height:130,width:140,borderRadius:10}}/>
-               
-              </Body>
-              <Body>
-                <Image source={Images.far} style={{height:130,width:140,borderRadius:10}}/>
-              
-              </Body>
-            </CardItem>
-            <CardItem>
-              <View style={{flex:1,flexDirection:'row'}} >
-              <View> 
-              <Thumbnail source={Images.right}style={{height:25,width:30}}  />
-
-              
-                  <Text style={textFormat} >Click a clear picture</Text>
-                
-                  </View>
-                  <View>        
-
-                 <Thumbnail source={Images.wrong}style={{height:25,width:30}}  />
-      
-
-                
-                  <Text style={textFormat} >Don't click blurry image</Text>
-              
-                  </View>
-
-              </View>
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Image source={Images.notblurry} style={{height:130,width:140, borderRadius:10}}/>
-                
-              </Body>
-              <Body>
-                <Image source={Images.blurry} style={{height:130,width:140, borderRadius:10}}/>
-                
-              </Body>
-            </CardItem>
-           </Card>
-       </View>
-       </ScrollView>
-     </Content>
-     </Container>
-    );
-  }
+                    <Tab activeTextStyle={{color: '#fff', fontWeight: 'bold'}}
+                         textStyle={{color: '#fff', fontSize: 12}}
+                         tabStyle={{backgroundColor: '#286028', height: 60}}
+                         activeTabStyle={{backgroundColor: '#0c420c', height: 60}}
+                         heading="Register">
+                        <Register navigation={this.props.navigation}/>
+                    </Tab>
+                    
+                </Tabs>
+            </Container>
+        );
+    }
 }
 
-const styles=StyleSheet.create({
-  headerTitle:{
-    justifyContent:'center',
-    alignItems:'center',
-    fontSize:30,
-    fontWeight:'bold',
-    color:"green"
-  },
-  headerTitle2:{
-  marginLeft:30,
-    color:"red"
-  },
-  textFormat:{
-    width:Dimensions.get('window').width*0.5,
-    paddingRight:10
-  }
+const styles = StyleSheet.create({
+    header: {},
+    tab: {
+        backgroundColor: '#3F51B5'
+    }
+
 })
