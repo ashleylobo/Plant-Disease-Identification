@@ -173,7 +173,7 @@ const AppNavigator = createStackNavigator({
   {
   defaultNavigationOptions: ({navigation}) => {
     return {
-      headerLeft:(
+      headerLeft:( 
         <FontAwesome5 name={"bars"} brand style={{paddingLeft:15 , fontSize: 30, color:'white'}} onPress={() => navigation.toggleDrawer()}/>
       ),
       title:("Farmitra"),
