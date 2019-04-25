@@ -117,7 +117,6 @@ export default class CropDetailPage extends Component {
 
 
 
-        <Text> this is  {cropName} </Text>
         {this.showDetails(cropName)}
 
         <Button style={{marginTop:20,alignSelf:'center',justifyContent:'center',backgroundColor:'#0c420c' , borderRadius:5 ,color:'white',width:Dimensions.get('window').width-100,height:55}}
