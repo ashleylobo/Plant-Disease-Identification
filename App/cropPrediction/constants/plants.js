@@ -10,7 +10,7 @@ export default plants = [
       group:3
     },
     {
-      name: "Grapes",
+      name: "Grape",
       image:Images.grape,
       planting: "A VERY LONG alright",
       care:"something..",

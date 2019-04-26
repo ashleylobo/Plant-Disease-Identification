@@ -6,14 +6,9 @@ import ImagePicker from "react-native-image-picker";
 import strings from '../../constants/strings';
 import axios from "axios";
 import backendip from '../../constants/backendip';
-
-
-
-
-
+import LoadScreen from '../LoadScreen';
 
 const Form = t.form.Form;
-
 
 
 export default class QuestionForm extends Component {
@@ -27,7 +22,8 @@ export default class QuestionForm extends Component {
         start : false,
         imageLink : "",
         fd : false,
-        uri : false
+        uri : false,
+        changeLoadState : true
     };
   }
 
@@ -116,6 +112,8 @@ export default class QuestionForm extends Component {
   handleSubmit = async () => {
       const value = this._form.getValue();
 
+      this.setState({changeLoadState : false})
+
       var link = await this._uploadToImgur();
 
       axios.post(`${backendip}/askqts`, {
@@ -126,6 +124,7 @@ export default class QuestionForm extends Component {
         location : value.location
       }).then(res =>{
         console.log(res.data)
+        this.props.navigation.navigate('forum')
       }).catch(err => console.log(err))
 
       console.log(value , "link")
@@ -194,40 +193,41 @@ export default class QuestionForm extends Component {
     return (
       <ScrollView>
 
+      {
+      this.state.changeLoadState ?
         <View style={styles.container} >
 
-        {
-              this.state.start &&
-              <Form 
-              type={ this.state.fund }
-              value={ this.state.value }
-              onChange={ this.handleChange }
-              options={this.formOption}
-              ref={c => this._form = c} 
-              />
-            }
+          {
+            this.state.start &&
+            <Form 
+            type={ this.state.fund }
+            value={ this.state.value }
+            onChange={ this.handleChange }
+            options={this.formOption}
+            ref={c => this._form = c} 
+            />
+          }
 
 
-            <Button rounded full style={styles.button}
-                        onPress={ this._getPhotos }
-                        >
-                        <Text style={ styles.text } > { strings.UploadImage } </Text>
-            </Button>
+          <Button rounded full style={styles.button} onPress={ this._getPhotos }>
+              <Text style={ styles.text } > { strings.UploadImage } </Text>
+          </Button>
 
-            {
-              this.state.uri != false &&
-              <Image style={{margin:10, alignContent : 'center' , width: 250, height: 250 }}
-                      source={{ uri : this.state.uri }}
-              />
-            }
-            <Button rounded full style={styles.button}
-                        onPress={ this.handleSubmit }
-                        >
-                        <Text style={ styles.text } > { strings.Submit } </Text>
-            </Button>
+          {
+            this.state.uri != false &&
+            <Image style={{margin:10, alignContent : 'center' , width: 250, height: 250 }}
+                    source={{ uri : this.state.uri }}
+            />
+          }
+          
+          <Button rounded full style={styles.button} onPress={ this.handleSubmit }>
+              <Text style={ styles.text } > { strings.Submit } </Text>
+          </Button>
 
         </View>
-
+       :
+       <LoadScreen/>
+      }
 
 
       </ScrollView>

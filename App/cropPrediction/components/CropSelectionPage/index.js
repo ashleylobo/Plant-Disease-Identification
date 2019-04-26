@@ -102,6 +102,7 @@ export default class CropSelectionPage extends Component {
     }
 
     var finaleList = {
+      loginSignUpState:1,
       state:1,
       imgList:imgDictList
     }
@@ -115,8 +116,8 @@ export default class CropSelectionPage extends Component {
       index: 0,
       actions: [NavigationActions.navigate({ routeName: 'noPage'}, {imgs:{imgs:imgList,changeState:1}} )],
     });
+    
     this.props.navigation.dispatch(resetAction);
-
   }
 
   _setEn = async () =>{

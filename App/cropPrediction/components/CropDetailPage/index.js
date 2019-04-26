@@ -99,9 +99,6 @@ export default class CropDetailPage extends Component {
         <Toggle title="Pest/Diseases" text={plants[this.state.index].pest_diseases} />
         <Toggle title="Harvest" text={plants[this.state.index].harves} />
         
-        
-
-
         </View>
       )
     }
@@ -112,10 +109,10 @@ export default class CropDetailPage extends Component {
     const { navigation } = this.props;
 
     const cropName=navigation.getParam('name',"no crop")
+
+    console.log("the CropName IS..............",cropName)
     return (
       <ScrollView>
-
-
 
         {this.showDetails(cropName)}
 

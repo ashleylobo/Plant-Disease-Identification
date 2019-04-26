@@ -108,13 +108,10 @@ export default class Forum extends Component {
         </Button>
             
         <Button style={{ backgroundColor: '#0c420c', marginBottom:52 }}>
-          <FontAwesome5 name={"chalkboard-teacher"} brand style={{ fontSize: 20, color:'#ffffff'}} />
+          <FontAwesome5 name={"exchange-alt"} brand style={{ fontSize: 20, color:'#ffffff'}} />
         </Button>
       </Fab>
-
     </View>
-
-
     );
   }
 }

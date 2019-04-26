@@ -153,8 +153,8 @@ const page14 = createDrawerNavigator({
 
 
 const AppNavigator = createStackNavigator({
-  loginSignUp:{screen:LoginSignUp},
-  noPage : page13,  
+  noPage : page13,
+  loginSignUp:{screen:LoginSignUp},  
   profile: Mdn,
   profile1:page1,
   // profile2:page2,

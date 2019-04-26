@@ -87,7 +87,7 @@ export default class ResultOfPredictedDisease extends Component {
       this.setState({predicted : true})
         
     } catch(err) {
-      alert(err)
+      alert("Enter The Proper Image for testing , i.e image of the selected fruit")
     }   
   }
 

@@ -38,9 +38,6 @@ export default class BottomTab extends Component {
       }
     
     });
-
-    
-
   }
 
 
