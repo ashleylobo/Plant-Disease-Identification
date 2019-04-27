@@ -2,16 +2,19 @@ import React, { Component } from 'react';
 import { View, Text , ScrollView , Image,TouchableOpacity,FlatList } from 'react-native';
 import {  Button } from 'native-base';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Dialog, { DialogContent,DialogTitle } from 'react-native-popup-dialog';
+
 
 export default class Advisory extends Component {
   constructor(props) {
     super(props);
     this.state = {
       imgs:[
-        {uri:require('../../assets/images/advisory_vector.jpeg') , description:'Demonstrate your commitment to health and .....' , type:'ADVISE'},
-        {uri:require('../../assets/images/clean_vector.jpg') , description:'Demonstrate your commitment to health and .....' , type:'CLEANING'},
-        {uri:require('../../assets/images/fertilizers_vector.jpg') , description:'Demonstrate your commitment to health and .....' , type:'FERTILIZERS'},
-        {uri:require('../../assets/images/harvest_vector.jpg') , description:'Demonstrate your commitment to health and .....' , type:'HARVESTING'}]
+        {uri:require('../../assets/images/advisory_vector.jpeg') , description:'Advise in farming for healthy and good yield.....' , type:'ADVISE'},
+        {uri:require('../../assets/images/clean_vector.jpg') , description:'Demonstrate and practice on cleaning and and cultivating.....' , type:'CLEANING'},
+        {uri:require('../../assets/images/fertilizers_vector.jpg') , description:'Use and amount of use fertilizers and pestisides.....' , type:'FERTILIZERS'},
+        {uri:require('../../assets/images/harvest_vector.jpg') , description:'Tools and general practice for harvesting and cultivation.....' , type:'HARVESTING'}],
+      visible:false
     };
   }
 
@@ -56,6 +59,44 @@ export default class Advisory extends Component {
                 )}}
             >
           </FlatList>
+
+          <Dialog
+            visible={this.state.visible}           
+            height="70%"
+            width='80%'
+            onTouchOutside={() => {
+              this.setState({ visible: false });
+            }}
+            style={{flex:1,flexWrap:'wrap'}}
+          >
+          {/* circle */}
+            
+            <View style={{backgroundColor:'#dbdbdb'}}>
+
+              <View style={{flexDirection:'row' , paddingTop:10}}>
+                  <FontAwesome5 name={"circle"} brand style={{ paddingLeft:15,paddingRight:15,paddingTop:3,fontSize: 25, color:'#0c420c'}} />
+                  <Text> Advise in farming for health and </Text>
+              </View>
+
+              <View style={{flexDirection:'row' , paddingTop:10}}>
+                  <FontAwesome5 name={"circle"} brand style={{ paddingLeft:15,paddingRight:15,paddingTop:3,fontSize: 25, color:'#0c420c'}} />
+                  <Text> Advise in farming for health and </Text>
+              </View>
+
+              <View style={{flexDirection:'row' , paddingTop:10}}>
+                  <FontAwesome5 name={"circle"} brand style={{ paddingLeft:15,paddingRight:15,paddingTop:3,fontSize: 25, color:'#0c420c'}} />
+                  <Text> Advise in farming for health and </Text>
+              </View>
+
+               <View style={{flexDirection:'row' , paddingTop:10}}>
+                  <FontAwesome5 name={"circle"} brand style={{ paddingLeft:15,paddingRight:15,paddingTop:3,fontSize: 25, color:'#0c420c'}} />
+                  <Text> Advise in farming for health and </Text>
+              </View>             
+
+            </View>
+          
+         
+         </Dialog>
 
       </View>
     );

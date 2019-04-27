@@ -87,20 +87,6 @@ export default class HomePage extends Component {
             <BottomTab tab="homePage" navigation={ this.props.navigation } />
           </View>
           
-          {/* chalkboard-teacher */}
-
-          {/* <View style={{bottom:0}}>
-            <BottomTab tab="homePage" navigation={ this.props.navigation } />
-          </View>
-            
-          <Fab
-            active={this.state.active}
-            containerStyle={{ }}
-            style={{ backgroundColor: 'white' , marginBottom:45}}
-            position="bottomRight">
-            <FontAwesome5 name={"chalkboard-teacher"} brand style={{ fontSize: 20, color:'#0c420c'}} />
-          </Fab> */}
-
         </View>
       );
     }
