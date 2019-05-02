@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View,Image, Text ,FlatList,TouchableOpacity,AsyncStorage} from 'react-native';
+import { View,Image, Text ,FlatList,TouchableOpacity,AsyncStorage, ScrollView} from 'react-native';
 import {Button} from 'native-base';
 import LoginSignUp from '../LoginSignUp';
 import { StackActions, NavigationActions } from 'react-navigation';
@@ -142,6 +142,7 @@ export default class CropSelectionPage extends Component {
     console.disableYellowBox = true
     
     return (
+      <ScrollView>
       <View style={{alignContent:'center'}}>
 
         <FlatList 
@@ -181,6 +182,7 @@ export default class CropSelectionPage extends Component {
         }
        
       </View>
+      </ScrollView>
     );
   }
 }
