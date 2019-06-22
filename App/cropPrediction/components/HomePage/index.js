@@ -6,6 +6,7 @@ import Advisory from './Advisory';
 import strings from '../../constants/strings';
 import BottomTab from '../BottomTab';
 
+
 export default class HomePage extends Component {
   constructor(props) {
     super(props);

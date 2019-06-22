@@ -93,7 +93,7 @@ export default class Forum extends Component {
 
       {/* this.props.navigation.navigate('questionForm') */}
 
-      <Fab
+      {/* <Fab
         active={this.state.active}
         containerStyle={{ }}
         style={{ backgroundColor: 'white' , marginBottom:45}}
@@ -110,7 +110,21 @@ export default class Forum extends Component {
         <Button style={{ backgroundColor: '#0c420c', marginBottom:52 }}>
           <FontAwesome5 name={"exchange-alt"} brand style={{ fontSize: 20, color:'#ffffff'}} />
         </Button>
+      </Fab> */}
+
+
+      <Fab
+        active={this.state.active}
+        containerStyle={{ }}
+        style={{ backgroundColor: 'white' , marginBottom:45}}
+        position="bottomRight"
+        onPress={() => this.props.navigation.navigate('questionForm')}>
+
+        <FontAwesome5 name={"plus"} brand style={{ fontSize: 30, color:'#0c420c'}} />
+        
       </Fab>
+      
+
     </View>
     );
   }
