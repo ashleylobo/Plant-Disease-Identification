@@ -12,6 +12,7 @@ import call from 'react-native-phone-call'
 import predictionip from '../../constants/predictionip';
 import axios from "axios";
 import LoadScreen from "../LoadScreen";
+import { Text as txt } from 'react-native-openanything';
 
 const contact = {
   number: '18001801551', // String value with the number to call
@@ -96,8 +97,10 @@ export default class ResultOfPredictedDisease extends Component {
     }   
   }
 
-  handleCall = ()=>{
-    call(contact).catch(console.error)
+  handleCall = async ()=>{
+    var body = "Mr. Ram wants help for " + this.state.name + "\n QUERY ID: " + String( Math.round( Math.random()*51000 % 94999 ) )
+    txt(phone = "8655513317", message = body, autoEncode = false)
+    // call(contact).catch(console.error)
   }  
 
   async componentDidMount() {
@@ -214,7 +217,7 @@ export default class ResultOfPredictedDisease extends Component {
 
                 <Button style={{marginBottom:15,alignSelf:'center',justifyContent:'center',backgroundColor:'#0c420c' , borderRadius:5 ,color:'white',width:Dimensions.get('window').width-200,height:55}}
                     onPress={this.handleCall}>
-                  <Text style={{fontSize:18 , fontWeight:'bold',color:'white'}}>Call Helpline</Text>
+                  <Text style={{fontSize:18 , fontWeight:'bold',color:'white'}}>Contact Helpline</Text>
                 </Button>
 
 
