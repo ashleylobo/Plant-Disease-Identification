@@ -1,1 +1,1 @@
-export default BACKENDIP = 'https://plantdiseasecomps2020.herokuapp.com'
+export default BACKENDIP = 'https://plantbeforum.herokuapp.com'

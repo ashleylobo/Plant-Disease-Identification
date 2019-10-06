@@ -1,1 +1,1 @@
-export default predictionip = "https://farmitra-rec.onrender.com/predict"
+export default predictionip = "https://plantbeabhi.herokuapp.com/predict"

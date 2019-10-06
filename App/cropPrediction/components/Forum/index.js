@@ -35,7 +35,7 @@ export default class Forum extends Component {
   async componentDidMount(){
 
     var qdata = []
-    console.log("comunting")
+    console.log(`${backendip}/allqts`)
     await axios.get(`${backendip}/allqts`).then( res => {
 
       let data = res.data;
